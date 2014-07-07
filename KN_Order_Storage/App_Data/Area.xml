@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Areas>
+  <Area>
+    <ID>1</ID>
+    <Name>城西</Name>
+  </Area>
+  <Area>
+    <ID>2</ID>
+    <Name>城东</Name>
+  </Area>  
+</Areas>
