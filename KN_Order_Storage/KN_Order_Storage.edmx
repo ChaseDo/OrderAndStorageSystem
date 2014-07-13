@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KN_Order_StorageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ct_client">
+          <Key>
+            <PropertyRef Name="ct_client_id" />
+          </Key>
+          <Property Name="ct_client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ct_client_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ct_create_time" Type="datetime" Nullable="false" />
+          <Property Name="ct_client_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ct_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ct_client_tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ct_client_qq" Type="nvarchar" MaxLength="50" />
+          <Property Name="ct_wedding_day" Type="datetime" />
+          <Property Name="ct_reach_status" Type="nchar" MaxLength="10" />
+          <Property Name="ct_order_status" Type="nchar" MaxLength="10" />
+          <Property Name="ct_express" Type="nvarchar" MaxLength="50" />
+          <Property Name="ct_freight" Type="float" />
+          <Property Name="ct_address" Type="nvarchar" MaxLength="500" />
+          <Property Name="ct_remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="fu_function">
+          <Key>
+            <PropertyRef Name="fu_function_id" />
+          </Key>
+          <Property Name="fu_function_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fu_function_parent_id" Type="int" />
+          <Property Name="fu_function_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fu_function_dec" Type="nvarchar" MaxLength="500" />
+          <Property Name="fu_controller" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fu_action" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fu_status" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="in_inventory">
+          <Key>
+            <PropertyRef Name="in_inventory_id" />
+          </Key>
+          <Property Name="in_inventory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="in_inventory_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="in_create_time" Type="datetime" Nullable="false" />
+          <Property Name="in_image" Type="image" />
+          <Property Name="in_style_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="in_style_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="in_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="in_color" Type="nchar" MaxLength="10" />
+          <Property Name="in_size" Type="nchar" MaxLength="10" />
+          <Property Name="in_eur" Type="float" />
+          <Property Name="in_usd" Type="float" />
+          <Property Name="in_cny" Type="float" />
+          <Property Name="in_amount" Type="int" />
+          <Property Name="in_remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="or_order">
+          <Key>
+            <PropertyRef Name="or_order_id" />
+          </Key>
+          <Property Name="or_order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ct_client_id" Type="int" />
+          <Property Name="or_order_type" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="in_inventory_id" Type="int" />
+          <Property Name="or_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="or_from" Type="nvarchar" MaxLength="50" />
+          <Property Name="or_order_time" Type="datetime" />
+          <Property Name="or_delivered_time" Type="datetime" />
+          <Property Name="or_style_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="or_style_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="or_handled_by" Type="nvarchar" MaxLength="50" />
+          <Property Name="or_price" Type="float" />
+          <Property Name="or_amount" Type="float" />
+          <Property Name="or_remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="or_s_shoulder" Type="float" />
+          <Property Name="or_s_chest" Type="float" />
+          <Property Name="or_s_waist" Type="float" />
+          <Property Name="or_s_buttocks" Type="float" />
+          <Property Name="or_s_stature" Type="float" />
+          <Property Name="or_s_length" Type="float" />
+          <Property Name="or_s_shoes" Type="float" />
+          <Property Name="or_order_status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="rf_role_function_rel">
+          <Key>
+            <PropertyRef Name="rf_id" />
+          </Key>
+          <Property Name="rf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ro_role_id" Type="int" Nullable="false" />
+          <Property Name="fu_function_id" Type="int" Nullable="false" />
+          <Property Name="rf_status" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ro_role">
+          <Key>
+            <PropertyRef Name="ro_role_id" />
+          </Key>
+          <Property Name="ro_role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ro_role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ro_function_dec" Type="nvarchar" MaxLength="500" />
+          <Property Name="ro_status" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="st_stock">
+          <Key>
+            <PropertyRef Name="st_stock_id" />
+          </Key>
+          <Property Name="st_stock_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="in_inventory_id" Type="int" Nullable="false" />
+          <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="st_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="st_in_number" Type="int" />
+          <Property Name="st_out_number" Type="int" />
+          <Property Name="st_in_time" Type="datetime" />
+          <Property Name="st_out_time" Type="datetime" />
+          <Property Name="st_remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ul_userlog">
+          <Key>
+            <PropertyRef Name="ul_userlog_id" />
+          </Key>
+          <Property Name="ul_userlog_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="us_user_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="or_order_id" Type="int" Nullable="false" />
+          <Property Name="ul_log_time" Type="datetime" Nullable="false" />
+          <Property Name="ul_operation" Type="nvarchar" MaxLength="10" />
+          <Property Name="ul_description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="us_user">
+          <Key>
+            <PropertyRef Name="us_user_id" />
+          </Key>
+          <Property Name="us_user_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ro_role_id" Type="int" Nullable="false" />
+          <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="us_user_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="us_from" Type="nvarchar" MaxLength="50" />
+          <Property Name="us_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="us_create_time" Type="datetime" Nullable="false" />
+          <Property Name="us_last_login_time" Type="datetime" Nullable="false" />
+          <Property Name="us_last_login_ip" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="us_remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="fk_or_order_ct_client_id">
+          <End Role="ct_client" Type="Self.ct_client" Multiplicity="0..1" />
+          <End Role="or_order" Type="Self.or_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ct_client">
+              <PropertyRef Name="ct_client_id" />
+            </Principal>
+            <Dependent Role="or_order">
+              <PropertyRef Name="ct_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_or_order_in_inventory_id">
+          <End Role="in_inventory" Type="Self.in_inventory" Multiplicity="0..1" />
+          <End Role="or_order" Type="Self.or_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="in_inventory">
+              <PropertyRef Name="in_inventory_id" />
+            </Principal>
+            <Dependent Role="or_order">
+              <PropertyRef Name="in_inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rf_role_function_rel_fu_function_id">
+          <End Role="fu_function" Type="Self.fu_function" Multiplicity="1" />
+          <End Role="rf_role_function_rel" Type="Self.rf_role_function_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fu_function">
+              <PropertyRef Name="fu_function_id" />
+            </Principal>
+            <Dependent Role="rf_role_function_rel">
+              <PropertyRef Name="fu_function_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rf_role_function_rel_ro_role_id">
+          <End Role="ro_role" Type="Self.ro_role" Multiplicity="1" />
+          <End Role="rf_role_function_rel" Type="Self.rf_role_function_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ro_role">
+              <PropertyRef Name="ro_role_id" />
+            </Principal>
+            <Dependent Role="rf_role_function_rel">
+              <PropertyRef Name="ro_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_st_stock_in_inventory_id">
+          <End Role="in_inventory" Type="Self.in_inventory" Multiplicity="1" />
+          <End Role="st_stock" Type="Self.st_stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="in_inventory">
+              <PropertyRef Name="in_inventory_id" />
+            </Principal>
+            <Dependent Role="st_stock">
+              <PropertyRef Name="in_inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ul_userlog_or_order_id">
+          <End Role="or_order" Type="Self.or_order" Multiplicity="1" />
+          <End Role="ul_userlog" Type="Self.ul_userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="or_order">
+              <PropertyRef Name="or_order_id" />
+            </Principal>
+            <Dependent Role="ul_userlog">
+              <PropertyRef Name="or_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ul_userlog_us_user_id">
+          <End Role="us_user" Type="Self.us_user" Multiplicity="1" />
+          <End Role="ul_userlog" Type="Self.ul_userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="us_user">
+              <PropertyRef Name="us_user_id" />
+            </Principal>
+            <Dependent Role="ul_userlog">
+              <PropertyRef Name="us_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_us_user_ro_role_id">
+          <End Role="ro_role" Type="Self.ro_role" Multiplicity="1" />
+          <End Role="us_user" Type="Self.us_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ro_role">
+              <PropertyRef Name="ro_role_id" />
+            </Principal>
+            <Dependent Role="us_user">
+              <PropertyRef Name="ro_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KN_Order_StorageModelStoreContainer">
+          <EntitySet Name="ct_client" EntityType="Self.ct_client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fu_function" EntityType="Self.fu_function" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="in_inventory" EntityType="Self.in_inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="or_order" EntityType="Self.or_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rf_role_function_rel" EntityType="Self.rf_role_function_rel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ro_role" EntityType="Self.ro_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="st_stock" EntityType="Self.st_stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ul_userlog" EntityType="Self.ul_userlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="us_user" EntityType="Self.us_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_or_order_ct_client_id" Association="Self.fk_or_order_ct_client_id">
+            <End Role="ct_client" EntitySet="ct_client" />
+            <End Role="or_order" EntitySet="or_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_or_order_in_inventory_id" Association="Self.fk_or_order_in_inventory_id">
+            <End Role="in_inventory" EntitySet="in_inventory" />
+            <End Role="or_order" EntitySet="or_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rf_role_function_rel_fu_function_id" Association="Self.fk_rf_role_function_rel_fu_function_id">
+            <End Role="fu_function" EntitySet="fu_function" />
+            <End Role="rf_role_function_rel" EntitySet="rf_role_function_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rf_role_function_rel_ro_role_id" Association="Self.fk_rf_role_function_rel_ro_role_id">
+            <End Role="ro_role" EntitySet="ro_role" />
+            <End Role="rf_role_function_rel" EntitySet="rf_role_function_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_st_stock_in_inventory_id" Association="Self.fk_st_stock_in_inventory_id">
+            <End Role="in_inventory" EntitySet="in_inventory" />
+            <End Role="st_stock" EntitySet="st_stock" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ul_userlog_or_order_id" Association="Self.fk_ul_userlog_or_order_id">
+            <End Role="or_order" EntitySet="or_order" />
+            <End Role="ul_userlog" EntitySet="ul_userlog" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ul_userlog_us_user_id" Association="Self.fk_ul_userlog_us_user_id">
+            <End Role="us_user" EntitySet="us_user" />
+            <End Role="ul_userlog" EntitySet="ul_userlog" />
+          </AssociationSet>
+          <AssociationSet Name="fk_us_user_ro_role_id" Association="Self.fk_us_user_ro_role_id">
+            <End Role="ro_role" EntitySet="ro_role" />
+            <End Role="us_user" EntitySet="us_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KNOrderStorageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ct_client">
+          <Key>
+            <PropertyRef Name="ct_client_id" />
+          </Key>
+          <Property Name="ct_client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ct_client_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ct_create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ct_client_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ct_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ct_client_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ct_client_qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ct_wedding_day" Type="DateTime" Precision="3" />
+          <Property Name="ct_reach_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ct_order_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ct_express" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ct_freight" Type="Double" />
+          <Property Name="ct_address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ct_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="or_order" Relationship="Self.fk_or_order_ct_client_id" FromRole="ct_client" ToRole="or_order" />
+        </EntityType>
+        <EntityType Name="fu_function">
+          <Key>
+            <PropertyRef Name="fu_function_id" />
+          </Key>
+          <Property Name="fu_function_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fu_function_parent_id" Type="Int32" />
+          <Property Name="fu_function_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fu_function_dec" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fu_controller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fu_action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fu_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="rf_role_function_rel" Relationship="Self.fk_rf_role_function_rel_fu_function_id" FromRole="fu_function" ToRole="rf_role_function_rel" />
+        </EntityType>
+        <EntityType Name="in_inventory">
+          <Key>
+            <PropertyRef Name="in_inventory_id" />
+          </Key>
+          <Property Name="in_inventory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="in_inventory_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="in_create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="in_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="in_style_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="in_style_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="in_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="in_color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="in_size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="in_eur" Type="Double" />
+          <Property Name="in_usd" Type="Double" />
+          <Property Name="in_cny" Type="Double" />
+          <Property Name="in_amount" Type="Int32" />
+          <Property Name="in_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="or_order" Relationship="Self.fk_or_order_in_inventory_id" FromRole="in_inventory" ToRole="or_order" />
+          <NavigationProperty Name="st_stock" Relationship="Self.fk_st_stock_in_inventory_id" FromRole="in_inventory" ToRole="st_stock" />
+        </EntityType>
+        <EntityType Name="or_order">
+          <Key>
+            <PropertyRef Name="or_order_id" />
+          </Key>
+          <Property Name="or_order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ct_client_id" Type="Int32" />
+          <Property Name="or_order_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="in_inventory_id" Type="Int32" />
+          <Property Name="or_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="or_from" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="or_order_time" Type="DateTime" Precision="3" />
+          <Property Name="or_delivered_time" Type="DateTime" Precision="3" />
+          <Property Name="or_style_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="or_style_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="or_handled_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="or_price" Type="Double" />
+          <Property Name="or_amount" Type="Double" />
+          <Property Name="or_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="or_s_shoulder" Type="Double" />
+          <Property Name="or_s_chest" Type="Double" />
+          <Property Name="or_s_waist" Type="Double" />
+          <Property Name="or_s_buttocks" Type="Double" />
+          <Property Name="or_s_stature" Type="Double" />
+          <Property Name="or_s_length" Type="Double" />
+          <Property Name="or_s_shoes" Type="Double" />
+          <Property Name="or_order_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ct_client" Relationship="Self.fk_or_order_ct_client_id" FromRole="or_order" ToRole="ct_client" />
+          <NavigationProperty Name="in_inventory" Relationship="Self.fk_or_order_in_inventory_id" FromRole="or_order" ToRole="in_inventory" />
+          <NavigationProperty Name="ul_userlog" Relationship="Self.fk_ul_userlog_or_order_id" FromRole="or_order" ToRole="ul_userlog" />
+        </EntityType>
+        <EntityType Name="rf_role_function_rel">
+          <Key>
+            <PropertyRef Name="rf_id" />
+          </Key>
+          <Property Name="rf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ro_role_id" Type="Int32" Nullable="false" />
+          <Property Name="fu_function_id" Type="Int32" Nullable="false" />
+          <Property Name="rf_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="fu_function" Relationship="Self.fk_rf_role_function_rel_fu_function_id" FromRole="rf_role_function_rel" ToRole="fu_function" />
+          <NavigationProperty Name="ro_role" Relationship="Self.fk_rf_role_function_rel_ro_role_id" FromRole="rf_role_function_rel" ToRole="ro_role" />
+        </EntityType>
+        <EntityType Name="ro_role">
+          <Key>
+            <PropertyRef Name="ro_role_id" />
+          </Key>
+          <Property Name="ro_role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ro_role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ro_function_dec" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ro_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="rf_role_function_rel" Relationship="Self.fk_rf_role_function_rel_ro_role_id" FromRole="ro_role" ToRole="rf_role_function_rel" />
+          <NavigationProperty Name="us_user" Relationship="Self.fk_us_user_ro_role_id" FromRole="ro_role" ToRole="us_user" />
+        </EntityType>
+        <EntityType Name="st_stock">
+          <Key>
+            <PropertyRef Name="st_stock_id" />
+          </Key>
+          <Property Name="st_stock_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="in_inventory_id" Type="Int32" Nullable="false" />
+          <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="st_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="st_in_number" Type="Int32" />
+          <Property Name="st_out_number" Type="Int32" />
+          <Property Name="st_in_time" Type="DateTime" Precision="3" />
+          <Property Name="st_out_time" Type="DateTime" Precision="3" />
+          <Property Name="st_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="in_inventory" Relationship="Self.fk_st_stock_in_inventory_id" FromRole="st_stock" ToRole="in_inventory" />
+        </EntityType>
+        <EntityType Name="ul_userlog">
+          <Key>
+            <PropertyRef Name="ul_userlog_id" />
+          </Key>
+          <Property Name="ul_userlog_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="us_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="or_order_id" Type="Int32" Nullable="false" />
+          <Property Name="ul_log_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ul_operation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ul_description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="or_order" Relationship="Self.fk_ul_userlog_or_order_id" FromRole="ul_userlog" ToRole="or_order" />
+          <NavigationProperty Name="us_user" Relationship="Self.fk_ul_userlog_us_user_id" FromRole="ul_userlog" ToRole="us_user" />
+        </EntityType>
+        <EntityType Name="us_user">
+          <Key>
+            <PropertyRef Name="us_user_id" />
+          </Key>
+          <Property Name="us_user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ro_role_id" Type="Int32" Nullable="false" />
+          <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="us_user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="us_from" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="us_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="us_create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="us_last_login_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="us_last_login_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="us_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ro_role" Relationship="Self.fk_us_user_ro_role_id" FromRole="us_user" ToRole="ro_role" />
+          <NavigationProperty Name="ul_userlog" Relationship="Self.fk_ul_userlog_us_user_id" FromRole="us_user" ToRole="ul_userlog" />
+        </EntityType>
+        <Association Name="fk_or_order_ct_client_id">
+          <End Role="ct_client" Type="Self.ct_client" Multiplicity="0..1" />
+          <End Role="or_order" Type="Self.or_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ct_client">
+              <PropertyRef Name="ct_client_id" />
+            </Principal>
+            <Dependent Role="or_order">
+              <PropertyRef Name="ct_client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rf_role_function_rel_fu_function_id">
+          <End Role="fu_function" Type="Self.fu_function" Multiplicity="1" />
+          <End Role="rf_role_function_rel" Type="Self.rf_role_function_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fu_function">
+              <PropertyRef Name="fu_function_id" />
+            </Principal>
+            <Dependent Role="rf_role_function_rel">
+              <PropertyRef Name="fu_function_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_or_order_in_inventory_id">
+          <End Role="in_inventory" Type="Self.in_inventory" Multiplicity="0..1" />
+          <End Role="or_order" Type="Self.or_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="in_inventory">
+              <PropertyRef Name="in_inventory_id" />
+            </Principal>
+            <Dependent Role="or_order">
+              <PropertyRef Name="in_inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_st_stock_in_inventory_id">
+          <End Role="in_inventory" Type="Self.in_inventory" Multiplicity="1" />
+          <End Role="st_stock" Type="Self.st_stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="in_inventory">
+              <PropertyRef Name="in_inventory_id" />
+            </Principal>
+            <Dependent Role="st_stock">
+              <PropertyRef Name="in_inventory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ul_userlog_or_order_id">
+          <End Role="or_order" Type="Self.or_order" Multiplicity="1" />
+          <End Role="ul_userlog" Type="Self.ul_userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="or_order">
+              <PropertyRef Name="or_order_id" />
+            </Principal>
+            <Dependent Role="ul_userlog">
+              <PropertyRef Name="or_order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rf_role_function_rel_ro_role_id">
+          <End Role="ro_role" Type="Self.ro_role" Multiplicity="1" />
+          <End Role="rf_role_function_rel" Type="Self.rf_role_function_rel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ro_role">
+              <PropertyRef Name="ro_role_id" />
+            </Principal>
+            <Dependent Role="rf_role_function_rel">
+              <PropertyRef Name="ro_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_us_user_ro_role_id">
+          <End Role="ro_role" Type="Self.ro_role" Multiplicity="1" />
+          <End Role="us_user" Type="Self.us_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ro_role">
+              <PropertyRef Name="ro_role_id" />
+            </Principal>
+            <Dependent Role="us_user">
+              <PropertyRef Name="ro_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ul_userlog_us_user_id">
+          <End Role="us_user" Type="Self.us_user" Multiplicity="1" />
+          <End Role="ul_userlog" Type="Self.ul_userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="us_user">
+              <PropertyRef Name="us_user_id" />
+            </Principal>
+            <Dependent Role="ul_userlog">
+              <PropertyRef Name="us_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KN_Order_Storage_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ct_client" EntityType="Self.ct_client" />
+          <EntitySet Name="fu_function" EntityType="Self.fu_function" />
+          <EntitySet Name="in_inventory" EntityType="Self.in_inventory" />
+          <EntitySet Name="or_order" EntityType="Self.or_order" />
+          <EntitySet Name="rf_role_function_rel" EntityType="Self.rf_role_function_rel" />
+          <EntitySet Name="ro_role" EntityType="Self.ro_role" />
+          <EntitySet Name="st_stock" EntityType="Self.st_stock" />
+          <EntitySet Name="ul_userlog" EntityType="Self.ul_userlog" />
+          <EntitySet Name="us_user" EntityType="Self.us_user" />
+          <AssociationSet Name="fk_or_order_ct_client_id" Association="Self.fk_or_order_ct_client_id">
+            <End Role="ct_client" EntitySet="ct_client" />
+            <End Role="or_order" EntitySet="or_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rf_role_function_rel_fu_function_id" Association="Self.fk_rf_role_function_rel_fu_function_id">
+            <End Role="fu_function" EntitySet="fu_function" />
+            <End Role="rf_role_function_rel" EntitySet="rf_role_function_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_or_order_in_inventory_id" Association="Self.fk_or_order_in_inventory_id">
+            <End Role="in_inventory" EntitySet="in_inventory" />
+            <End Role="or_order" EntitySet="or_order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_st_stock_in_inventory_id" Association="Self.fk_st_stock_in_inventory_id">
+            <End Role="in_inventory" EntitySet="in_inventory" />
+            <End Role="st_stock" EntitySet="st_stock" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ul_userlog_or_order_id" Association="Self.fk_ul_userlog_or_order_id">
+            <End Role="or_order" EntitySet="or_order" />
+            <End Role="ul_userlog" EntitySet="ul_userlog" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rf_role_function_rel_ro_role_id" Association="Self.fk_rf_role_function_rel_ro_role_id">
+            <End Role="ro_role" EntitySet="ro_role" />
+            <End Role="rf_role_function_rel" EntitySet="rf_role_function_rel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_us_user_ro_role_id" Association="Self.fk_us_user_ro_role_id">
+            <End Role="ro_role" EntitySet="ro_role" />
+            <End Role="us_user" EntitySet="us_user" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ul_userlog_us_user_id" Association="Self.fk_ul_userlog_us_user_id">
+            <End Role="us_user" EntitySet="us_user" />
+            <End Role="ul_userlog" EntitySet="ul_userlog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KN_Order_StorageModelStoreContainer" CdmEntityContainer="KN_Order_Storage_Entities">
+          <EntitySetMapping Name="ct_client">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.ct_client">
+              <MappingFragment StoreEntitySet="ct_client">
+                <ScalarProperty Name="ct_client_id" ColumnName="ct_client_id" />
+                <ScalarProperty Name="ct_client_source" ColumnName="ct_client_source" />
+                <ScalarProperty Name="us_user_name" ColumnName="us_user_name" />
+                <ScalarProperty Name="ct_create_time" ColumnName="ct_create_time" />
+                <ScalarProperty Name="ct_client_name" ColumnName="ct_client_name" />
+                <ScalarProperty Name="ct_status" ColumnName="ct_status" />
+                <ScalarProperty Name="ct_client_tel" ColumnName="ct_client_tel" />
+                <ScalarProperty Name="ct_client_qq" ColumnName="ct_client_qq" />
+                <ScalarProperty Name="ct_wedding_day" ColumnName="ct_wedding_day" />
+                <ScalarProperty Name="ct_reach_status" ColumnName="ct_reach_status" />
+                <ScalarProperty Name="ct_order_status" ColumnName="ct_order_status" />
+                <ScalarProperty Name="ct_express" ColumnName="ct_express" />
+                <ScalarProperty Name="ct_freight" ColumnName="ct_freight" />
+                <ScalarProperty Name="ct_address" ColumnName="ct_address" />
+                <ScalarProperty Name="ct_remark" ColumnName="ct_remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fu_function">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.fu_function">
+              <MappingFragment StoreEntitySet="fu_function">
+                <ScalarProperty Name="fu_function_id" ColumnName="fu_function_id" />
+                <ScalarProperty Name="fu_function_parent_id" ColumnName="fu_function_parent_id" />
+                <ScalarProperty Name="fu_function_name" ColumnName="fu_function_name" />
+                <ScalarProperty Name="fu_function_dec" ColumnName="fu_function_dec" />
+                <ScalarProperty Name="fu_controller" ColumnName="fu_controller" />
+                <ScalarProperty Name="fu_action" ColumnName="fu_action" />
+                <ScalarProperty Name="fu_status" ColumnName="fu_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="in_inventory">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.in_inventory">
+              <MappingFragment StoreEntitySet="in_inventory">
+                <ScalarProperty Name="in_inventory_id" ColumnName="in_inventory_id" />
+                <ScalarProperty Name="in_inventory_type" ColumnName="in_inventory_type" />
+                <ScalarProperty Name="us_user_name" ColumnName="us_user_name" />
+                <ScalarProperty Name="in_create_time" ColumnName="in_create_time" />
+                <ScalarProperty Name="in_image" ColumnName="in_image" />
+                <ScalarProperty Name="in_style_id" ColumnName="in_style_id" />
+                <ScalarProperty Name="in_style_name" ColumnName="in_style_name" />
+                <ScalarProperty Name="in_status" ColumnName="in_status" />
+                <ScalarProperty Name="in_color" ColumnName="in_color" />
+                <ScalarProperty Name="in_size" ColumnName="in_size" />
+                <ScalarProperty Name="in_eur" ColumnName="in_eur" />
+                <ScalarProperty Name="in_usd" ColumnName="in_usd" />
+                <ScalarProperty Name="in_cny" ColumnName="in_cny" />
+                <ScalarProperty Name="in_amount" ColumnName="in_amount" />
+                <ScalarProperty Name="in_remark" ColumnName="in_remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="or_order">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.or_order">
+              <MappingFragment StoreEntitySet="or_order">
+                <ScalarProperty Name="or_order_id" ColumnName="or_order_id" />
+                <ScalarProperty Name="ct_client_id" ColumnName="ct_client_id" />
+                <ScalarProperty Name="or_order_type" ColumnName="or_order_type" />
+                <ScalarProperty Name="in_inventory_id" ColumnName="in_inventory_id" />
+                <ScalarProperty Name="or_status" ColumnName="or_status" />
+                <ScalarProperty Name="or_from" ColumnName="or_from" />
+                <ScalarProperty Name="or_order_time" ColumnName="or_order_time" />
+                <ScalarProperty Name="or_delivered_time" ColumnName="or_delivered_time" />
+                <ScalarProperty Name="or_style_id" ColumnName="or_style_id" />
+                <ScalarProperty Name="or_style_name" ColumnName="or_style_name" />
+                <ScalarProperty Name="or_handled_by" ColumnName="or_handled_by" />
+                <ScalarProperty Name="or_price" ColumnName="or_price" />
+                <ScalarProperty Name="or_amount" ColumnName="or_amount" />
+                <ScalarProperty Name="or_remark" ColumnName="or_remark" />
+                <ScalarProperty Name="or_s_shoulder" ColumnName="or_s_shoulder" />
+                <ScalarProperty Name="or_s_chest" ColumnName="or_s_chest" />
+                <ScalarProperty Name="or_s_waist" ColumnName="or_s_waist" />
+                <ScalarProperty Name="or_s_buttocks" ColumnName="or_s_buttocks" />
+                <ScalarProperty Name="or_s_stature" ColumnName="or_s_stature" />
+                <ScalarProperty Name="or_s_length" ColumnName="or_s_length" />
+                <ScalarProperty Name="or_s_shoes" ColumnName="or_s_shoes" />
+                <ScalarProperty Name="or_order_status" ColumnName="or_order_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rf_role_function_rel">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.rf_role_function_rel">
+              <MappingFragment StoreEntitySet="rf_role_function_rel">
+                <ScalarProperty Name="rf_id" ColumnName="rf_id" />
+                <ScalarProperty Name="ro_role_id" ColumnName="ro_role_id" />
+                <ScalarProperty Name="fu_function_id" ColumnName="fu_function_id" />
+                <ScalarProperty Name="rf_status" ColumnName="rf_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ro_role">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.ro_role">
+              <MappingFragment StoreEntitySet="ro_role">
+                <ScalarProperty Name="ro_role_id" ColumnName="ro_role_id" />
+                <ScalarProperty Name="ro_role_name" ColumnName="ro_role_name" />
+                <ScalarProperty Name="ro_function_dec" ColumnName="ro_function_dec" />
+                <ScalarProperty Name="ro_status" ColumnName="ro_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="st_stock">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.st_stock">
+              <MappingFragment StoreEntitySet="st_stock">
+                <ScalarProperty Name="st_stock_id" ColumnName="st_stock_id" />
+                <ScalarProperty Name="in_inventory_id" ColumnName="in_inventory_id" />
+                <ScalarProperty Name="us_user_name" ColumnName="us_user_name" />
+                <ScalarProperty Name="st_status" ColumnName="st_status" />
+                <ScalarProperty Name="st_in_number" ColumnName="st_in_number" />
+                <ScalarProperty Name="st_out_number" ColumnName="st_out_number" />
+                <ScalarProperty Name="st_in_time" ColumnName="st_in_time" />
+                <ScalarProperty Name="st_out_time" ColumnName="st_out_time" />
+                <ScalarProperty Name="st_remark" ColumnName="st_remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ul_userlog">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.ul_userlog">
+              <MappingFragment StoreEntitySet="ul_userlog">
+                <ScalarProperty Name="ul_userlog_id" ColumnName="ul_userlog_id" />
+                <ScalarProperty Name="us_user_id" ColumnName="us_user_id" />
+                <ScalarProperty Name="or_order_id" ColumnName="or_order_id" />
+                <ScalarProperty Name="ul_log_time" ColumnName="ul_log_time" />
+                <ScalarProperty Name="ul_operation" ColumnName="ul_operation" />
+                <ScalarProperty Name="ul_description" ColumnName="ul_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="us_user">
+            <EntityTypeMapping TypeName="KNOrderStorageModel.us_user">
+              <MappingFragment StoreEntitySet="us_user">
+                <ScalarProperty Name="us_user_id" ColumnName="us_user_id" />
+                <ScalarProperty Name="ro_role_id" ColumnName="ro_role_id" />
+                <ScalarProperty Name="us_user_name" ColumnName="us_user_name" />
+                <ScalarProperty Name="us_user_password" ColumnName="us_user_password" />
+                <ScalarProperty Name="us_from" ColumnName="us_from" />
+                <ScalarProperty Name="us_status" ColumnName="us_status" />
+                <ScalarProperty Name="us_create_time" ColumnName="us_create_time" />
+                <ScalarProperty Name="us_last_login_time" ColumnName="us_last_login_time" />
+                <ScalarProperty Name="us_last_login_ip" ColumnName="us_last_login_ip" />
+                <ScalarProperty Name="us_remark" ColumnName="us_remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,13 +175,55 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ct_client.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fu_function.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="in_inventory.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KN_Order_Storage.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KN_Order_Storage.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KN_Order_Storage.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KN_Order_Storage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KN_Order_Storage.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="or_order.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rf_role_function_rel.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ro_role.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="st_stock.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ul_userlog.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="us_user.cs">
+      <DependentUpon>KN_Order_Storage.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Area.xml" />
@@ -235,6 +279,23 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="KN_Order_Storage.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KN_Order_Storage.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="KN_Order_Storage.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KN_Order_Storage.edmx</DependentUpon>
+      <LastGenOutput>KN_Order_Storage.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="KN_Order_Storage.edmx.diagram">
+      <DependentUpon>KN_Order_Storage.edmx</DependentUpon>
+    </Content>
+    <Content Include="KN_Order_Storage.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KN_Order_Storage.edmx</DependentUpon>
+      <LastGenOutput>KN_Order_Storage.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -276,7 +337,9 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
