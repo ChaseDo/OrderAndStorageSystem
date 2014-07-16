@@ -1,0 +1,141 @@
+﻿@model KN_Order_Storage.ct_client
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ct_client</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_client_source, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client_source)
+                @Html.ValidationMessageFor(model => model.ct_client_source)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.us_user_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.us_user_name)
+                @Html.ValidationMessageFor(model => model.us_user_name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_create_time, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_create_time)
+                @Html.ValidationMessageFor(model => model.ct_create_time)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_client_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client_name)
+                @Html.ValidationMessageFor(model => model.ct_client_name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_status)
+                @Html.ValidationMessageFor(model => model.ct_status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_client_tel, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client_tel)
+                @Html.ValidationMessageFor(model => model.ct_client_tel)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_client_qq, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client_qq)
+                @Html.ValidationMessageFor(model => model.ct_client_qq)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_wedding_day, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_wedding_day)
+                @Html.ValidationMessageFor(model => model.ct_wedding_day)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_reach_status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_reach_status)
+                @Html.ValidationMessageFor(model => model.ct_reach_status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_order_status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_order_status)
+                @Html.ValidationMessageFor(model => model.ct_order_status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_express, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_express)
+                @Html.ValidationMessageFor(model => model.ct_express)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_freight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_freight)
+                @Html.ValidationMessageFor(model => model.ct_freight)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_address)
+                @Html.ValidationMessageFor(model => model.ct_address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_remark)
+                @Html.ValidationMessageFor(model => model.ct_remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
