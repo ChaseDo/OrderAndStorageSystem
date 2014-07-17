@@ -1,131 +1,131 @@
 ﻿@model KN_Order_Storage.ct_client
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>客户信息</h2>
 
 <div>
-    <h4>ct_client</h4>
+	@*<h4>客户</h4>*@
 	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_client_source)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client_source)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_client_source)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_client_source)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.us_user_name)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.us_user_name)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.us_user_name)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.us_user_name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_create_time)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_create_time)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_create_time)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_create_time)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_client_name)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client_name)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_client_name)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_client_name)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_status)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_status)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_status)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_status)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_client_tel)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client_tel)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_client_tel)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_client_tel)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_client_qq)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client_qq)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_client_qq)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_client_qq)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_wedding_day)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_wedding_day)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_wedding_day)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_wedding_day)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_reach_status)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_reach_status)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_reach_status)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_reach_status)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_order_status)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_order_status)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_order_status)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_order_status)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_express)
-        </dt>
+		@*<dt>
+			@Html.DisplayNameFor(model => model.ct_express)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_express)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_express)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_freight)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_freight)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_freight)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_freight)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_address)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_address)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_address)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_address)
+		</dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ct_remark)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_remark)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_remark)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.ct_remark)
+		</dd>
 
-    </dl>
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ct_client_id }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("编辑", "Edit", new { id = Model.ct_client_id }) |
+	@Html.ActionLink("返回列表", "Index")
 </p>

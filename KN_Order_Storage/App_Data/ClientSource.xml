@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ClientSources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Lang="EN">
-  <ClientSource>
+  <Source>
     <ID>1</ID>
     <Name>百度</Name>
-  </ClientSource>
-  <ClientSource>
+  </Source>
+  <Source>
     <ID>2</ID>
+    <Name>大众</Name>
+  </Source>
+  <Source>
+    <ID>3</ID>
     <Name>19楼</Name>
-  </ClientSource>
+  </Source>
+  <Source>
+    <ID>4</ID>
+    <Name>Wed114</Name>
+  </Source>
 </ClientSources>

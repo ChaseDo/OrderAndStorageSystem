@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>编辑客户信息</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ct_client</h4>
+        @*<h4>客户</h4>*@
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ct_client_id)
@@ -25,13 +25,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.us_user_name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.us_user_name)
                 @Html.ValidationMessageFor(model => model.us_user_name)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ct_create_time, new { @class = "control-label col-md-2" })
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ct_express, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ct_express)
@@ -119,7 +119,7 @@
                 @Html.EditorFor(model => model.ct_address)
                 @Html.ValidationMessageFor(model => model.ct_address)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ct_remark, new { @class = "control-label col-md-2" })
@@ -131,12 +131,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>

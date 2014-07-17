@@ -5,28 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>客户管理</h2><p>@Html.ActionLink("新增客户", "Create")</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ct_client_source)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.us_user_name)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ct_create_time)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ct_client_name)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ct_status)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ct_client_tel)
         </th>
@@ -42,7 +38,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ct_order_status)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ct_express)
         </th>
         <th>
@@ -50,7 +46,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ct_address)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ct_remark)
         </th>
@@ -62,18 +58,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.ct_client_source)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.us_user_name)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ct_create_time)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ct_client_name)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ct_status)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ct_client_tel)
         </td>
@@ -89,7 +85,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.ct_order_status)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ct_express)
         </td>
         <td>
@@ -97,14 +93,14 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ct_address)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ct_remark)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ct_client_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ct_client_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ct_client_id })
+            @Html.ActionLink("查看", "Details", new { id = item.ct_client_id }) |
+            @Html.ActionLink("编辑", "Edit", new { id=item.ct_client_id }) |          
+            @Html.ActionLink("删除", "Delete", new { id=item.ct_client_id })
         </td>
     </tr>
 }
