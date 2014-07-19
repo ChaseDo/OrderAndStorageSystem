@@ -74,8 +74,9 @@ GO
 --ÒµÎñ±í
 
 CREATE TABLE [dbo].[ct_client](
-	[ct_client_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	[ct_client_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL, 	
 	[ct_client_source] [nvarchar](50) NULL,
+	[ct_client_source_cst] [nvarchar](50) NULL,
 	[us_user_name] [nvarchar](50) NOT NULL,
 	[ct_create_time] [datetime] NOT NULL,
 	[ct_client_name] [nvarchar](50) NOT NULL,

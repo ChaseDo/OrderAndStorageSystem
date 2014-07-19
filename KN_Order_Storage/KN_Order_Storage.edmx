@@ -11,6 +11,7 @@
           </Key>
           <Property Name="ct_client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ct_client_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="ct_client_source_cst" Type="nvarchar" MaxLength="50" />
           <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ct_create_time" Type="datetime" Nullable="false" />
           <Property Name="ct_client_name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -305,6 +306,7 @@
           <Property Name="ct_address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="ct_remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="or_order" Relationship="Self.fk_or_order_ct_client_id" FromRole="ct_client" ToRole="or_order" />
+          <Property Name="ct_client_source_cst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="fu_function">
           <Key>
@@ -586,6 +588,7 @@
           <EntitySetMapping Name="ct_client">
             <EntityTypeMapping TypeName="KNOrderStorageModel.ct_client">
               <MappingFragment StoreEntitySet="ct_client">
+                <ScalarProperty Name="ct_client_source_cst" ColumnName="ct_client_source_cst" />
                 <ScalarProperty Name="ct_client_id" ColumnName="ct_client_id" />
                 <ScalarProperty Name="ct_client_source" ColumnName="ct_client_source" />
                 <ScalarProperty Name="us_user_name" ColumnName="us_user_name" />

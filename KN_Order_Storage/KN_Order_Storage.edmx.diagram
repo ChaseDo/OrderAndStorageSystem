@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c589e6ade73a493e99dfb19db5ee9657" Name="Diagram1">
-        <EntityTypeShape EntityType="KNOrderStorageModel.ct_client" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KNOrderStorageModel.ct_client" Width="1.625" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KNOrderStorageModel.fu_function" Width="1.5" PointX="3.75" PointY="21.5" IsExpanded="true" />
         <EntityTypeShape EntityType="KNOrderStorageModel.in_inventory" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KNOrderStorageModel.or_order" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />

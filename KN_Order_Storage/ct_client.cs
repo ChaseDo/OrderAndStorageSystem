@@ -26,6 +26,9 @@ namespace KN_Order_Storage
         [Display(Name = "客户来源")]
         public string ct_client_source { get; set; }
 
+        [Display(Name = "其他")]
+        public string ct_client_source_cst { get; set; }
+
         [Required]
         [Display(Name = "用户名")]
         public string us_user_name { get; set; }
