@@ -7,11 +7,17 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KN_Order_Storage;
+using KN_Order_Storage.Logic.Interfaces;
+using KN_Order_Storage.Logic.Implementor;
+using KN_Order_Storage.Models;
+
 
 namespace KN_Order_Storage.Controllers
 {
     public class ClientController : Controller
     {
+        private IOptionsProvider OptionsProvider = new OptionsProvider();
+
         private KN_Order_Storage_Entities db = new KN_Order_Storage_Entities();
 
         // GET: /Client/
@@ -38,6 +44,12 @@ namespace KN_Order_Storage.Controllers
         // GET: /Client/Create
         public ActionResult Create()
         {
+            ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
+                                select new SelectListItem()
+                                {
+                                    Text = x.Name,
+                                    Value = x.Id.ToString()
+                                }).ToList();
             return View();
         }
 
@@ -69,6 +81,15 @@ namespace KN_Order_Storage.Controllers
             if (ct_client == null)
             {
                 return HttpNotFound();
+            }
+            else
+            {
+                ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
+                                  select new SelectListItem()
+                                  {
+                                      Text = x.Name,
+                                      Value = x.Id.ToString()
+                                  }).ToList();
             }
             return View(ct_client);
         }
@@ -123,5 +144,7 @@ namespace KN_Order_Storage.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

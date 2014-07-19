@@ -1,7 +1,7 @@
 ﻿@model KN_Order_Storage.ct_client
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "新增客户";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ct_client_source, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ct_client_source)
+                @Html.DropDownListFor(model => model.ct_client_source, (List<SelectListItem>)ViewBag.Source, new { @class = "btn btn-default dropdown-toggle col-md-2" })         
                 @Html.ValidationMessageFor(model => model.ct_client_source)
             </div>
         </div>
@@ -81,17 +81,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ct_reach_status, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ct_reach_status, new { @class = "control-label col-md-2" })           
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ct_reach_status)
+                @Html.DropDownListFor(model => model.ct_reach_status, new List<SelectListItem> {
+                        new SelectListItem(){Text = "未到店", Value = "N"}
+                        , new SelectListItem(){Text = "到店", Value = "R"}
+                    }, new { @class = "btn btn-default dropdown-toggle col-md-2" })    
                 @Html.ValidationMessageFor(model => model.ct_reach_status)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ct_order_status, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ct_order_status, new { @class = "control-label col-md-2" })           
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ct_order_status)
+                @Html.DropDownListFor(model => model.ct_order_status, new List<SelectListItem> {
+                        new SelectListItem(){Text = "未下单", Value = "N"}
+                        , new SelectListItem(){Text = "下单", Value = "O"}
+                        , new SelectListItem(){Text = "结单", Value = "D"}
+                    }, new { @class = "btn btn-default dropdown-toggle col-md-2" })
                 @Html.ValidationMessageFor(model => model.ct_order_status)
             </div>
         </div>
@@ -123,7 +130,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ct_remark, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ct_remark)
+                @Html.TextAreaFor(model => model.ct_remark)
                 @Html.ValidationMessageFor(model => model.ct_remark)
             </div>
         </div>

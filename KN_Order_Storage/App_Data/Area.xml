@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
-<Areas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Lang="EN">
-  <Area>
-    <ID>1</ID>
-    <Name>城西</Name>
-  </Area>
-  <Area>
-    <ID>2</ID>
-    <Name>城东</Name>
-  </Area>  
-</Areas>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AreaOption xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Lang="EN">
+  <Areas>
+    <Area Id="1">
+      <Name>城西</Name>
+    </Area>
+    <Area Id="2">
+      <Name>城东</Name>
+    </Area>
+  </Areas>
+</AreaOption>
