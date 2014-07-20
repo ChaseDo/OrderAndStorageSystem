@@ -234,35 +234,13 @@
   <ItemGroup>
     <Content Include="App_Data\Area.xml" />
     <Content Include="App_Data\ClientSource.xml" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\icons\back.png" />
-    <Content Include="Content\icons\blank.gif" />
-    <Content Include="Content\icons\cancel.png" />
-    <Content Include="Content\icons\cut.png" />
-    <Content Include="Content\icons\edit_add.png" />
-    <Content Include="Content\icons\edit_remove.png" />
-    <Content Include="Content\icons\filesave.png" />
-    <Content Include="Content\icons\filter.png" />
-    <Content Include="Content\icons\help.png" />
-    <Content Include="Content\icons\large_chart.png" />
-    <Content Include="Content\icons\large_clipart.png" />
-    <Content Include="Content\icons\large_picture.png" />
-    <Content Include="Content\icons\large_shapes.png" />
-    <Content Include="Content\icons\large_smartart.png" />
-    <Content Include="Content\icons\mini_add.png" />
-    <Content Include="Content\icons\mini_edit.png" />
-    <Content Include="Content\icons\mini_refresh.png" />
-    <Content Include="Content\icons\no.png" />
-    <Content Include="Content\icons\ok.png" />
-    <Content Include="Content\icons\pencil.png" />
-    <Content Include="Content\icons\print.png" />
-    <Content Include="Content\icons\redo.png" />
-    <Content Include="Content\icons\reload.png" />
-    <Content Include="Content\icons\search.png" />
-    <Content Include="Content\icons\sum.png" />
-    <Content Include="Content\icons\tip.png" />
-    <Content Include="Content\icons\undo.png" />
     <Content Include="Content\images\accordion_arrows.png" />
     <Content Include="Content\images\blank.gif" />
     <Content Include="Content\images\calendar_arrows.png" />
@@ -303,7 +281,11 @@
       <DependentUpon>KN_Order_Storage.edmx</DependentUpon>
       <LastGenOutput>KN_Order_Storage.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\bootstrap-datepicker.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -6,7 +6,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>客户管理</h2><p>@Html.ActionLink("新增客户", "Create")</p>
+<h2>客户管理</h2>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                @Html.DropDownList("ct_client_source", new List<SelectListItem> {
+                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = "百度", Value = "1"}
+                        , new SelectListItem(){Text = "大众", Value = "2"}
+                        , new SelectListItem(){Text = "19楼", Value = "3"}
+                        , new SelectListItem(){Text = "Wed114", Value = "4"}
+                        , new SelectListItem(){Text = "其他", Value = "O"}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                @Html.DropDownList("ct_reach_status", new List<SelectListItem> {
+                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = "未到店", Value = WebConstants.ClientReachStatusN}
+                        , new SelectListItem(){Text = "已到店", Value = WebConstants.ClientReachStatusR}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                @Html.DropDownList("ct_order_status", new List<SelectListItem> {
+                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = "未下单", Value = WebConstants.ClientOrderStatusN}
+                        , new SelectListItem(){Text = "已下单", Value = WebConstants.ClientOrderStatusO}
+                        , new SelectListItem(){Text = "已结单", Value = WebConstants.ClientOrderStatusD}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                <label class="control-label">&nbsp;&nbsp;婚期</label>
+                <input data-provide="datepicker" class="form-control" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp1">
+                <label class="control-label">至</label>
+                <input data-provide="datepicker" class="form-control" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp2">
+                &nbsp;&nbsp;
+                @Html.DropDownList("criteria", new List<SelectListItem> {
+                        new SelectListItem(){Text = "姓名", Value = "姓名"}
+                        , new SelectListItem(){Text = "电话", Value = "电话"}
+                        , new SelectListItem(){Text = "QQ", Value = "QQ"}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                <input type="text" class="form-control" style="width: 15%" placeholder="输入查询条件">
+                <button type="submit" class="btn btn-default">查询</button>
+                <div class="pull-right" style="height: 34px; padding: 6px 12px; vertical-align: middle; ">
+                    @Html.ActionLink("新增客户", "Create")
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
 <table class="table">
     <tr>
         <th>
@@ -149,3 +191,4 @@
 }
 
 </table>
+
