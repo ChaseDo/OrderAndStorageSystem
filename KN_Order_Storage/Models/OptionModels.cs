@@ -40,7 +40,7 @@ namespace KN_Order_Storage.Models
     public class Source
     {
         [XmlAttribute]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [XmlElement]
         public string Name { get; set; }

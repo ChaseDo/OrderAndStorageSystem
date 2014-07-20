@@ -1,4 +1,5 @@
 ﻿@model KN_Order_Storage.ct_client
+@using KN_Order_Storage.Common
 
 @{
 	ViewBag.Title = "客户详情";
@@ -16,7 +17,34 @@
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.ct_client_source)
+			@switch (Model.ct_client_source.Trim())
+			{
+				case "1":
+					<div>百度</div>
+					break;
+				case "2":
+				<div>大众</div>
+					break;
+				case "3":
+				<div>19楼</div>
+					break;
+				case "4":
+				<div>Wed114</div>
+					break;
+				case "O":
+				@Html.DisplayFor(model => model.ct_client_source_cst)
+					break;
+				default:
+					break;
+			}
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client_name)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ct_client_name)
 		</dd>
 
 		<dt>
@@ -33,14 +61,6 @@
 
 		<dd>
 			@Html.DisplayFor(model => model.ct_create_time)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.ct_client_name)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.ct_client_name)
 		</dd>
 
 		<dt>
@@ -80,7 +100,17 @@
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.ct_reach_status)
+			@switch (Model.ct_reach_status.Trim())
+			{
+				case WebConstants.ClientReachStatusN:
+					<div>未到店</div>
+					break;
+				case WebConstants.ClientReachStatusR:
+				<div>已到店</div>
+					break;
+				default:
+					break;
+			}     
 		</dd>
 
 		<dt>
@@ -88,7 +118,20 @@
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.ct_order_status)
+			@switch (Model.ct_order_status.Trim())
+			{
+				case WebConstants.ClientOrderStatusN:
+					<div>未下单</div>
+					break;
+				case WebConstants.ClientOrderStatusO:
+				<div>已下单</div>
+					break;
+				case WebConstants.ClientOrderStatusD:
+				<div>已结单</div>
+					break;
+				default:
+					break;
+			}
 		</dd>
 
 		@*<dt>

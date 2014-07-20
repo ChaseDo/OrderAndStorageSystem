@@ -15,12 +15,12 @@
           <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ct_create_time" Type="datetime" Nullable="false" />
           <Property Name="ct_client_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ct_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ct_status" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="ct_client_tel" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ct_client_qq" Type="nvarchar" MaxLength="50" />
           <Property Name="ct_wedding_day" Type="datetime" />
-          <Property Name="ct_reach_status" Type="nchar" MaxLength="10" />
-          <Property Name="ct_order_status" Type="nchar" MaxLength="10" />
+          <Property Name="ct_reach_status" Type="nchar" MaxLength="1" />
+          <Property Name="ct_order_status" Type="nchar" MaxLength="1" />
           <Property Name="ct_express" Type="nvarchar" MaxLength="50" />
           <Property Name="ct_freight" Type="float" />
           <Property Name="ct_address" Type="nvarchar" MaxLength="500" />
@@ -49,7 +49,7 @@
           <Property Name="in_image" Type="image" />
           <Property Name="in_style_id" Type="nvarchar" MaxLength="50" />
           <Property Name="in_style_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="in_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="in_status" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="in_color" Type="nchar" MaxLength="10" />
           <Property Name="in_size" Type="nchar" MaxLength="10" />
           <Property Name="in_eur" Type="float" />
@@ -66,7 +66,7 @@
           <Property Name="ct_client_id" Type="int" />
           <Property Name="or_order_type" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="in_inventory_id" Type="int" />
-          <Property Name="or_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="or_status" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="or_from" Type="nvarchar" MaxLength="50" />
           <Property Name="or_order_time" Type="datetime" />
           <Property Name="or_delivered_time" Type="datetime" />
@@ -83,7 +83,7 @@
           <Property Name="or_s_stature" Type="float" />
           <Property Name="or_s_length" Type="float" />
           <Property Name="or_s_shoes" Type="float" />
-          <Property Name="or_order_status" Type="nchar" MaxLength="10" />
+          <Property Name="or_order_status" Type="nchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="rf_role_function_rel">
           <Key>
@@ -110,7 +110,7 @@
           <Property Name="st_stock_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="in_inventory_id" Type="int" Nullable="false" />
           <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="st_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="st_status" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="st_in_number" Type="int" />
           <Property Name="st_out_number" Type="int" />
           <Property Name="st_in_time" Type="datetime" />
@@ -295,12 +295,12 @@
           <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ct_create_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ct_client_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ct_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ct_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="ct_client_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ct_client_qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ct_wedding_day" Type="DateTime" Precision="3" />
-          <Property Name="ct_reach_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ct_order_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ct_reach_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ct_order_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="ct_express" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ct_freight" Type="Double" />
           <Property Name="ct_address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -332,7 +332,7 @@
           <Property Name="in_image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="in_style_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="in_style_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="in_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="in_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="in_color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="in_size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="in_eur" Type="Double" />
@@ -351,7 +351,7 @@
           <Property Name="ct_client_id" Type="Int32" />
           <Property Name="or_order_type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="in_inventory_id" Type="Int32" />
-          <Property Name="or_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="or_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="or_from" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="or_order_time" Type="DateTime" Precision="3" />
           <Property Name="or_delivered_time" Type="DateTime" Precision="3" />
@@ -368,7 +368,7 @@
           <Property Name="or_s_stature" Type="Double" />
           <Property Name="or_s_length" Type="Double" />
           <Property Name="or_s_shoes" Type="Double" />
-          <Property Name="or_order_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="or_order_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ct_client" Relationship="Self.fk_or_order_ct_client_id" FromRole="or_order" ToRole="ct_client" />
           <NavigationProperty Name="in_inventory" Relationship="Self.fk_or_order_in_inventory_id" FromRole="or_order" ToRole="in_inventory" />
           <NavigationProperty Name="ul_userlog" Relationship="Self.fk_ul_userlog_or_order_id" FromRole="or_order" ToRole="ul_userlog" />
@@ -402,7 +402,7 @@
           <Property Name="st_stock_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="in_inventory_id" Type="Int32" Nullable="false" />
           <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="st_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="st_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="st_in_number" Type="Int32" />
           <Property Name="st_out_number" Type="Int32" />
           <Property Name="st_in_time" Type="DateTime" Precision="3" />

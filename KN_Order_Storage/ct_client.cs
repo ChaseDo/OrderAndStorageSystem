@@ -33,11 +33,12 @@ namespace KN_Order_Storage
         [Display(Name = "用户名")]
         public string us_user_name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "创建时间不能为空")]
         [Display(Name = "创建时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public System.DateTime ct_create_time { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "客户名必须填写")]
         [Display(Name = "客户名")]
         public string ct_client_name { get; set; }
 
@@ -45,7 +46,7 @@ namespace KN_Order_Storage
         [Display(Name = "状态")]
         public string ct_status { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "手机号码必须填写")]
         [Display(Name = "手机号码")]
         public string ct_client_tel { get; set; }
 
@@ -53,6 +54,7 @@ namespace KN_Order_Storage
         public string ct_client_qq { get; set; }
 
         [Display(Name = "婚期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public Nullable<System.DateTime> ct_wedding_day { get; set; }
 
         [Display(Name = "到店状态")]

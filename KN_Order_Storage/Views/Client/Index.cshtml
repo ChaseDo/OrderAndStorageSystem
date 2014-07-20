@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<KN_Order_Storage.ct_client>
+@using KN_Order_Storage.Common
 
 @{
     ViewBag.Title = "客户信息";
@@ -56,7 +57,26 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ct_client_source)
+            @switch (item.ct_client_source.Trim())
+            {
+                case "1": 
+                    <div>百度</div>
+                    break;
+                case "2":
+                    <div>大众</div>
+                    break;
+                case "3":
+                    <div>19楼</div>
+                    break;
+                case "4":
+                    <div>Wed114</div>
+                    break;
+                case "O":
+                    @Html.DisplayFor(modelItem => item.ct_client_source_cst)
+                    break;
+                default:
+                    break;
+            }          
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.us_user_name)
@@ -65,7 +85,7 @@
             @Html.DisplayFor(modelItem => item.ct_create_time)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ct_client_name)
+            @Html.ActionLink(item.ct_client_name, "Details", new { id = item.ct_client_id })
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.ct_status)
@@ -80,10 +100,33 @@
             @Html.DisplayFor(modelItem => item.ct_wedding_day)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ct_reach_status)
+            @switch (item.ct_reach_status.Trim())
+            {
+                case WebConstants.ClientReachStatusN:
+                    <div>未到店</div>
+                    break;
+                case WebConstants.ClientReachStatusR:
+                    <div>已到店</div>
+                    break;
+                default:
+                    break;
+            }        
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ct_order_status)
+            @switch (item.ct_order_status.Trim())
+            {
+                case WebConstants.ClientOrderStatusN:
+                    <div>未下单</div>
+                    break;
+                case WebConstants.ClientOrderStatusO:
+                    <div>已下单</div>
+                    break;
+                case WebConstants.ClientOrderStatusD:
+                    <div>已结单</div>
+                    break;   
+                default:
+                    break;
+            }        
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.ct_express)
@@ -98,7 +141,7 @@
             @Html.DisplayFor(modelItem => item.ct_remark)
         </td>
         <td>
-            @Html.ActionLink("查看", "Details", new { id = item.ct_client_id }) |
+            @*@Html.ActionLink("查看", "Details", new { id = item.ct_client_id }) |*@
             @Html.ActionLink("编辑", "Edit", new { id=item.ct_client_id }) |          
             @Html.ActionLink("删除", "Delete", new { id=item.ct_client_id })
         </td>

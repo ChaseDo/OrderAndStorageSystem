@@ -10,6 +10,7 @@ using KN_Order_Storage;
 using KN_Order_Storage.Logic.Interfaces;
 using KN_Order_Storage.Logic.Implementor;
 using KN_Order_Storage.Models;
+using KN_Order_Storage.Common;
 
 
 namespace KN_Order_Storage.Controllers
@@ -23,7 +24,7 @@ namespace KN_Order_Storage.Controllers
         // GET: /Client/
         public ActionResult Index()
         {
-            return View(db.ct_client.ToList());
+            return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.ClientStatusYes).ToList());
         }
 
         // GET: /Client/Details/5
@@ -44,13 +45,14 @@ namespace KN_Order_Storage.Controllers
         // GET: /Client/Create
         public ActionResult Create()
         {
-            ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
-                                select new SelectListItem()
-                                {
-                                    Text = x.Name,
-                                    Value = x.Id.ToString()
-                                }).ToList();
-            return View();
+            PopulateClientSourceOption();
+
+            ct_client client = new KN_Order_Storage.ct_client();
+            client.us_user_name = "admin";
+            client.ct_status = WebConstants.ClientStatusYes;
+            client.ct_create_time = DateTime.Now;
+
+            return View(client);
         }
 
         // POST: /Client/Create
@@ -59,14 +61,14 @@ namespace KN_Order_Storage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="ct_client_id,ct_client_source,us_user_name,ct_create_time,ct_client_name,ct_status,ct_client_tel,ct_client_qq,ct_wedding_day,ct_reach_status,ct_order_status,ct_express,ct_freight,ct_address,ct_remark")] ct_client ct_client)
-        {
+        {         
             if (ModelState.IsValid)
-            {
+            {               
                 db.ct_client.Add(ct_client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            PopulateClientSourceOption();
             return View(ct_client);
         }
 
@@ -84,12 +86,7 @@ namespace KN_Order_Storage.Controllers
             }
             else
             {
-                ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
-                                  select new SelectListItem()
-                                  {
-                                      Text = x.Name,
-                                      Value = x.Id.ToString()
-                                  }).ToList();
+                PopulateClientSourceOption();
             }
             return View(ct_client);
         }
@@ -131,7 +128,9 @@ namespace KN_Order_Storage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ct_client ct_client = db.ct_client.Find(id);
-            db.ct_client.Remove(ct_client);
+            ct_client.ct_status = WebConstants.ClientStatusNo;
+            db.Entry(ct_client).State = EntityState.Modified;
+            //db.ct_client.Remove(ct_client);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -145,6 +144,15 @@ namespace KN_Order_Storage.Controllers
             base.Dispose(disposing);
         }
 
-
+        //Populate ClientSourceOption
+        private void PopulateClientSourceOption()
+        {
+            ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
+                              select new SelectListItem()
+                              {
+                                  Text = x.Name,
+                                  Value = x.Id
+                              }).ToList();
+        }
     }
 }

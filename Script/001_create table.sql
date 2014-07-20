@@ -80,12 +80,12 @@ CREATE TABLE [dbo].[ct_client](
 	[us_user_name] [nvarchar](50) NOT NULL,
 	[ct_create_time] [datetime] NOT NULL,
 	[ct_client_name] [nvarchar](50) NOT NULL,
-	[ct_status] [nchar](10) NOT NULL,
+	[ct_status] [nchar](1) NOT NULL,
 	[ct_client_tel] [nvarchar](50) NOT NULL,
 	[ct_client_qq] [nvarchar](50) NULL,
 	[ct_wedding_day] [datetime] NULL,
-	[ct_reach_status] [nchar](10) NULL,
-	[ct_order_status] [nchar](10) NULL,
+	[ct_reach_status] [nchar](1) NULL,
+	[ct_order_status] [nchar](1) NULL,
 	[ct_express] [nvarchar](50) NULL,
 	[ct_freight] [float] NULL,
 	[ct_address] [nvarchar](500) NULL,
@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[in_inventory](
 	[in_image] [image] NULL,
 	[in_style_id] [nvarchar](50) NULL,
 	[in_style_name] [nvarchar](50) NULL,
-	[in_status] [nchar](10) NOT NULL,	
+	[in_status] [nchar](1) NOT NULL,	
 	[in_color] [nchar](10) NULL,
 	[in_size] [nchar](10) NULL,
 	[in_eur] [float] NULL,
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[st_stock](
 	[st_stock_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[in_inventory_id] [int] NOT NULL,
 	[us_user_name] [nvarchar](50) NOT NULL,
-	[st_status] [nchar](10) NOT NULL,
+	[st_status] [nchar](1) NOT NULL,
 	[st_in_number] [int] NULL,
 	[st_out_number] [int] NULL,
 	[st_in_time] [datetime] NULL,
@@ -127,7 +127,7 @@ CREATE TABLE [dbo].[or_order](
 	[ct_client_id] [int] NULL,
 	[or_order_type] [nchar](10) NOT NULL,
 	[in_inventory_id] [int] NULL,
-	[or_status] [nchar](10) NOT NULL,
+	[or_status] [nchar](1) NOT NULL,
 	[or_from] [nvarchar](50) NULL,
 	[or_order_time] [datetime] NULL,
 	[or_delivered_time] [datetime] NULL,
@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[or_order](
 	[or_s_stature] [float] NULL,
 	[or_s_length] [float] NULL,
 	[or_s_shoes] [float] NULL,
-	[or_order_status] [nchar](10) NULL
+	[or_order_status] [nchar](1) NULL
 ) ON [PRIMARY]
 
 ALTER TABLE st_stock
