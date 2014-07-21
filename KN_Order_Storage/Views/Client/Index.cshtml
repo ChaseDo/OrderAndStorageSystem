@@ -31,9 +31,9 @@
                         , new SelectListItem(){Text = "已结单", Value = WebConstants.ClientOrderStatusD}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 <label class="control-label">&nbsp;&nbsp;婚期</label>
-                <input data-provide="datepicker" class="form-control" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp1">
+                <input data-provide="datepicker" class="form-control date" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp1">
                 <label class="control-label">至</label>
-                <input data-provide="datepicker" class="form-control" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp2">
+                <input data-provide="datepicker" class="form-control date" style="width: 10%" data-date-format="yyyy-mm-dd" id="dp2">
                 &nbsp;&nbsp;
                 @Html.DropDownList("criteria", new List<SelectListItem> {
                         new SelectListItem(){Text = "姓名", Value = "姓名"}
@@ -49,6 +49,11 @@
         </form>
     </div>
 </nav>
+<script>
+
+    $(".date").datepicker();
+
+</script>
 <table class="table">
     <tr>
         <th>
