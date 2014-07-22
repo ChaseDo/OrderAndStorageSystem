@@ -22,9 +22,20 @@ namespace KN_Order_Storage.Controllers
         private KN_Order_Storage_Entities db = new KN_Order_Storage_Entities();
 
         // GET: /Client/
-        public ActionResult Index()
+        public ActionResult Index(string source, string reachstatus, string orderstatus, string dp1, string dp2, string criteria, string term)
         {
-            return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.ClientStatusYes).ToList());
+            if (String.IsNullOrEmpty(source))
+            {
+                return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.ClientStatusYes).ToList());
+            }
+            else
+            {
+
+                return View(db.ct_client.Where(ct => 
+                    ct.ct_status == source && 
+                    ct.ct_reach_status == reachstatus &&
+                    ct.ct_order_status == orderstatus).ToList());
+            }
         }
 
         // GET: /Client/Details/5
