@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
@@ -75,7 +77,6 @@ namespace KN_Order_Storage.Helpers
         }
     }
         
-
     public static class WebModelSerializeHelper
     {
         public static string ModelToXMLSerialize<T>(this T webModel) where T : new()
@@ -109,26 +110,6 @@ namespace KN_Order_Storage.Helpers
                 return (T)serializer.Deserialize(stringReader);
             }
         }
-    }
-
-
-    public abstract class PagingList<T>
-    {
-        private List<T> items = null;
-        public List<T> Items
-        {
-            get
-            {
-                if (items == null)
-                { 
-                    items = new List<T>(); 
-                }
-                return items;
-            }
-            set { items = value; }
-        }
-
-        public virtual int TotalCount { get; set; }
     }
 
 }

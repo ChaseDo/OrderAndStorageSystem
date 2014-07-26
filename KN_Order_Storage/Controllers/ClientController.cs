@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +12,7 @@ using KN_Order_Storage.Logic.Interfaces;
 using KN_Order_Storage.Logic.Implementor;
 using KN_Order_Storage.Models;
 using KN_Order_Storage.Common;
+using LinqKit;
 
 
 namespace KN_Order_Storage.Controllers
@@ -30,11 +32,43 @@ namespace KN_Order_Storage.Controllers
             }
             else
             {
+                var predicate = PredicateBuilder.True<ct_client>();
 
-                return View(db.ct_client.Where(ct => 
-                    ct.ct_status == source && 
-                    ct.ct_reach_status == reachstatus &&
-                    ct.ct_order_status == orderstatus).ToList());
+                if (source != WebConstants.SearchAll)
+                {
+                    predicate = predicate.And(p => p.ct_status.Contains(source));
+                }
+                if (reachstatus != WebConstants.SearchAll)
+                {
+                    predicate = predicate.And(p => p.ct_reach_status.Contains(reachstatus));
+                }
+                if (orderstatus != WebConstants.SearchAll)
+                {
+                    predicate = predicate.And(p => p.ct_order_status.Contains(reachstatus));
+                }
+                if (dp1 != String.Empty)
+                {
+
+                    predicate = predicate.And(p => p.ct_wedding_day >= DateTime.Parse(dp1));
+                }
+                if (dp2 != String.Empty)
+                {
+
+                    predicate = predicate.And(p => p.ct_wedding_day <= DateTime.Parse(dp2));
+                }
+                if (criteria == "name" && term != String.Empty)
+                {
+                    predicate = predicate.And(p => p.ct_client_name.Contains(term));
+                }
+                if (criteria == "tel" && term != String.Empty)
+                {
+                    predicate = predicate.And(p => p.ct_client_tel.Contains(term));
+                }
+                if (criteria == "qq" && term != String.Empty)
+                {
+                    predicate = predicate.And(p => p.ct_client_qq.Contains(term));
+                }
+                return View(db.ct_client.AsExpandable().Where(predicate).ToList());
             }
         }
 
