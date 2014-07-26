@@ -44,7 +44,7 @@ namespace KN_Order_Storage.Controllers
                 }
                 if (orderstatus != WebConstants.SearchAll)
                 {
-                    predicate = predicate.And(p => p.ct_order_status.Contains(reachstatus));
+                    predicate = predicate.And(p => p.ct_order_status.Contains(orderstatus));
                 }
                 if (dp1 != String.Empty)
                 {
