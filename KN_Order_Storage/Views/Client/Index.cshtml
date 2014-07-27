@@ -33,7 +33,7 @@
                         new SelectListItem(){Text = "姓名", Value = "name"}
                         , new SelectListItem(){Text = "电话", Value = "tel"}
                         , new SelectListItem(){Text = "QQ", Value = "qq"}
-                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 8%" })
                 <input name="term" type="text" class="form-control" style="width: 15%" placeholder="输入查询条件">
                 <button type="submit" class="btn btn-default">查询</button>
                 <div class="pull-right" style="height: 34px; padding: 6px 12px; vertical-align: middle; ">
@@ -146,7 +146,19 @@
             @Html.DisplayFor(modelItem => item.ct_address)
         </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ct_remark)
+            @if (!item.ct_remark.IsEmpty())
+            {
+                if (item.ct_remark.Length > 10)
+                {
+                    <div title="@item.ct_remark">
+                       @item.ct_remark.Substring(0, 10)..
+                    </div>
+                }
+                else
+                {
+                    <div>@item.ct_remark</div>
+                }
+            }
         </td>
         <td>
             @*@Html.ActionLink("查看", "Details", new { id = item.ct_client_id }) |*@

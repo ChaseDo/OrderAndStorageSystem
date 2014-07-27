@@ -21,8 +21,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ct_client_source, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ct_client_source, (List<SelectListItem>)ViewBag.Source, new { @class = "btn btn-default dropdown-toggle col-md-2" })
-                @Html.ValidationMessageFor(model => model.ct_client_source)
+                @Html.DropDownListFor(model => model.ct_client_source, (List<SelectListItem>)ViewBag.Source, new { @id = "sourceDropDown", @class = "btn btn-default dropdown-toggle col-md-2" })
+                @Html.ValidationMessageFor(model => model.ct_client_source)&nbsp; 
+                @Html.EditorFor(model => model.ct_client_source_cst, new { @id = "sourceCSTEditor" })
+                @Html.ValidationMessageFor(model => model.ct_client_source_cst)
             </div>
         </div>
 
@@ -149,3 +151,5 @@
 <div>
     @Html.ActionLink("返回列表", "Index")
 </div>
+
+@Scripts.Render("~/Scripts/client.js")
