@@ -1,0 +1,131 @@
+﻿@model KN_Order_Storage.in_inventory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>in_inventory</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.in_inventory_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_inventory_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.us_user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.us_user_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_create_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_create_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_style_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_style_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_style_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_style_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_eur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_eur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_usd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_usd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_cny)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_cny)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.in_remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.in_remark)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.in_inventory_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

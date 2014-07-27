@@ -11,6 +11,7 @@ namespace KN_Order_Storage
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class in_inventory
     {
@@ -21,19 +22,48 @@ namespace KN_Order_Storage
         }
     
         public int in_inventory_id { get; set; }
+
+        [Display(Name = "类型")]
         public string in_inventory_type { get; set; }
+
+        [Required]
+        [Display(Name = "用户名")]
         public string us_user_name { get; set; }
+
+        [Required(ErrorMessage = "创建时间不能为空")]
+        [Display(Name = "创建时间")]
         public System.DateTime in_create_time { get; set; }
+
+        [Display(Name = "图片")]
         public byte[] in_image { get; set; }
+
+        [Display(Name = "货号")]
         public string in_style_id { get; set; }
         public string in_style_name { get; set; }
+
+        [Required]
+        [Display(Name = "状态")]
         public string in_status { get; set; }
+
+        [Display(Name = "颜色")]
         public string in_color { get; set; }
+
+        [Display(Name = "尺码")]
         public string in_size { get; set; }
+
+        [Display(Name = "EUR")]
         public Nullable<double> in_eur { get; set; }
+
+        [Display(Name = "USD")]
         public Nullable<double> in_usd { get; set; }
+
+        [Display(Name = "CNY")]
         public Nullable<double> in_cny { get; set; }
+
+        [Display(Name = "总数")]
         public Nullable<int> in_amount { get; set; }
+
+        [Display(Name = "备注")]
         public string in_remark { get; set; }
     
         public virtual ICollection<or_order> or_order { get; set; }

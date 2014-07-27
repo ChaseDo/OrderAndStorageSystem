@@ -1,0 +1,154 @@
+﻿@model IEnumerable<KN_Order_Storage.or_order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.or_order_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_order_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_delivered_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_style_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_style_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_handled_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_remark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_shoulder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_chest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_waist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_buttocks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_stature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_s_shoes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_order_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_inventory.in_inventory_type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_order_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_order_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_delivered_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_style_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_style_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_handled_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_remark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_shoulder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_chest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_waist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_buttocks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_stature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_s_shoes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_order_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_inventory.in_inventory_type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.or_order_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.or_order_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.or_order_id })
+        </td>
+    </tr>
+}
+
+</table>

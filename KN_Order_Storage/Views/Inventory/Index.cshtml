@@ -1,0 +1,112 @@
+﻿@model IEnumerable<KN_Order_Storage.in_inventory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.in_inventory_type)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.us_user_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_create_time)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.in_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_style_id)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.in_style_name)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.in_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_eur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_usd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_cny)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.in_remark)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_inventory_type)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.us_user_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_create_time)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.in_image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_style_id)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.in_style_name)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.in_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_eur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_usd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_cny)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.in_remark)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.in_inventory_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.in_inventory_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.in_inventory_id })
+        </td>
+    </tr>
+}
+
+</table>
