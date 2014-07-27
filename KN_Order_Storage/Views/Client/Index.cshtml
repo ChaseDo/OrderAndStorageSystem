@@ -10,25 +10,19 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                @Html.DropDownList("source", new List<SelectListItem> {
-                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = "百度", Value = "1"}
-                        , new SelectListItem(){Text = "大众", Value = "2"}
-                        , new SelectListItem(){Text = "19楼", Value = "3"}
-                        , new SelectListItem(){Text = "Wed114", Value = "4"}
-                        , new SelectListItem(){Text = "其他", Value = "O"}
-                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+            <div class="form-group">                
+                @Html.DropDownList("source", (List<SelectListItem>)ViewBag.Source, 
+                        new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("reachstatus", new List<SelectListItem> {
-                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = "未到店", Value = WebConstants.ClientReachStatusN}
-                        , new SelectListItem(){Text = "已到店", Value = WebConstants.ClientReachStatusR}
+                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = WebConstants.ClientReachStatusN, Value = WebConstants.ClientReachStatusN}
+                        , new SelectListItem(){Text = WebConstants.ClientReachStatusR, Value = WebConstants.ClientReachStatusR}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderstatus", new List<SelectListItem> {
-                        new SelectListItem(){Text = "所有", Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = "未下单", Value = WebConstants.ClientOrderStatusN}
-                        , new SelectListItem(){Text = "已下单", Value = WebConstants.ClientOrderStatusO}
-                        , new SelectListItem(){Text = "已结单", Value = WebConstants.ClientOrderStatusD}
+                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusN, Value = WebConstants.ClientOrderStatusN}
+                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusO, Value = WebConstants.ClientOrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusD, Value = WebConstants.ClientOrderStatusD}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 <label class="control-label">&nbsp;&nbsp;婚期</label>
                 <input name="dp1" class="form-control" style="width: 10%" id="dp1">
@@ -105,26 +99,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @switch (item.ct_client_source.Trim())
+
+            @if (item.ct_client_source.Trim() != WebConstants.SearchOther)
             {
-                case "1": 
-                    <div>百度</div>
-                    break;
-                case "2":
-                    <div>大众</div>
-                    break;
-                case "3":
-                    <div>19楼</div>
-                    break;
-                case "4":
-                    <div>Wed114</div>
-                    break;
-                case "O":
-                    @Html.DisplayFor(modelItem => item.ct_client_source_cst)
-                    break;
-                default:
-                    break;
-            }          
+                @Html.DisplayFor(modelItem => item.ct_client_source)
+            } 
+            else
+            {
+                @Html.DisplayFor(modelItem => item.ct_client_source_cst)
+            }         
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.us_user_name)
@@ -148,33 +131,10 @@
             @Html.DisplayFor(modelItem => item.ct_wedding_day)
         </td>
         <td>
-            @switch (item.ct_reach_status.Trim())
-            {
-                case WebConstants.ClientReachStatusN:
-                    <div>未到店</div>
-                    break;
-                case WebConstants.ClientReachStatusR:
-                    <div>已到店</div>
-                    break;
-                default:
-                    break;
-            }        
+            @Html.DisplayFor(modelItem => item.ct_reach_status)
         </td>
         <td>
-            @switch (item.ct_order_status.Trim())
-            {
-                case WebConstants.ClientOrderStatusN:
-                    <div>未下单</div>
-                    break;
-                case WebConstants.ClientOrderStatusO:
-                    <div>已下单</div>
-                    break;
-                case WebConstants.ClientOrderStatusD:
-                    <div>已结单</div>
-                    break;   
-                default:
-                    break;
-            }        
+            @Html.DisplayFor(modelItem => item.ct_order_status)
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.ct_express)

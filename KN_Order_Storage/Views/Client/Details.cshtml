@@ -16,28 +16,18 @@
 			@Html.DisplayNameFor(model => model.ct_client_source)
 		</dt>
 
-		<dd>
-			@switch (Model.ct_client_source.Trim())
-			{
-				case "1":
-					<div>百度</div>
-					break;
-				case "2":
-				<div>大众</div>
-					break;
-				case "3":
-				<div>19楼</div>
-					break;
-				case "4":
-				<div>Wed114</div>
-					break;
-				case "O":
+		@if (Model.ct_client_source != WebConstants.SearchOther)
+		{
+			<dd>
+				@Html.DisplayFor(model => model.ct_client_source)
+			</dd>
+		}
+		else
+		{
+			 <dd>
 				@Html.DisplayFor(model => model.ct_client_source_cst)
-					break;
-				default:
-					break;
-			}
-		</dd>
+			</dd>
+		}
 
 		<dt>
 			@Html.DisplayNameFor(model => model.ct_client_name)
@@ -100,17 +90,7 @@
 		</dt>
 
 		<dd>
-			@switch (Model.ct_reach_status.Trim())
-			{
-				case WebConstants.ClientReachStatusN:
-					<div>未到店</div>
-					break;
-				case WebConstants.ClientReachStatusR:
-				<div>已到店</div>
-					break;
-				default:
-					break;
-			}     
+			@Html.DisplayFor(model => model.ct_reach_status)
 		</dd>
 
 		<dt>
@@ -118,20 +98,7 @@
 		</dt>
 
 		<dd>
-			@switch (Model.ct_order_status.Trim())
-			{
-				case WebConstants.ClientOrderStatusN:
-					<div>未下单</div>
-					break;
-				case WebConstants.ClientOrderStatusO:
-				<div>已下单</div>
-					break;
-				case WebConstants.ClientOrderStatusD:
-				<div>已结单</div>
-					break;
-				default:
-					break;
-			}
+			@Html.DisplayFor(model => model.ct_order_status)
 		</dd>
 
 		@*<dt>

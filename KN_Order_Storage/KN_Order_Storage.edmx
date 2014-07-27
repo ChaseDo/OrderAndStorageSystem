@@ -19,8 +19,8 @@
           <Property Name="ct_client_tel" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ct_client_qq" Type="nvarchar" MaxLength="50" />
           <Property Name="ct_wedding_day" Type="datetime" />
-          <Property Name="ct_reach_status" Type="nchar" MaxLength="1" />
-          <Property Name="ct_order_status" Type="nchar" MaxLength="1" />
+          <Property Name="ct_reach_status" Type="nvarchar" MaxLength="10" />
+          <Property Name="ct_order_status" Type="nvarchar" MaxLength="10" />
           <Property Name="ct_express" Type="nvarchar" MaxLength="50" />
           <Property Name="ct_freight" Type="float" />
           <Property Name="ct_address" Type="nvarchar" MaxLength="500" />
@@ -36,7 +36,7 @@
           <Property Name="fu_function_dec" Type="nvarchar" MaxLength="500" />
           <Property Name="fu_controller" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fu_action" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="fu_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="fu_status" Type="nchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="in_inventory">
           <Key>
@@ -50,8 +50,8 @@
           <Property Name="in_style_id" Type="nvarchar" MaxLength="50" />
           <Property Name="in_style_name" Type="nvarchar" MaxLength="50" />
           <Property Name="in_status" Type="nchar" MaxLength="1" Nullable="false" />
-          <Property Name="in_color" Type="nchar" MaxLength="10" />
-          <Property Name="in_size" Type="nchar" MaxLength="10" />
+          <Property Name="in_color" Type="nvarchar" MaxLength="10" />
+          <Property Name="in_size" Type="nvarchar" MaxLength="10" />
           <Property Name="in_eur" Type="float" />
           <Property Name="in_usd" Type="float" />
           <Property Name="in_cny" Type="float" />
@@ -83,7 +83,7 @@
           <Property Name="or_s_stature" Type="float" />
           <Property Name="or_s_length" Type="float" />
           <Property Name="or_s_shoes" Type="float" />
-          <Property Name="or_order_status" Type="nchar" MaxLength="1" />
+          <Property Name="or_order_status" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="rf_role_function_rel">
           <Key>
@@ -92,7 +92,7 @@
           <Property Name="rf_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ro_role_id" Type="int" Nullable="false" />
           <Property Name="fu_function_id" Type="int" Nullable="false" />
-          <Property Name="rf_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="rf_status" Type="nchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="ro_role">
           <Key>
@@ -101,7 +101,7 @@
           <Property Name="ro_role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ro_role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ro_function_dec" Type="nvarchar" MaxLength="500" />
-          <Property Name="ro_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ro_status" Type="nchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="st_stock">
           <Key>
@@ -137,7 +137,7 @@
           <Property Name="us_user_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="us_user_password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="us_from" Type="nvarchar" MaxLength="50" />
-          <Property Name="us_status" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="us_status" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="us_create_time" Type="datetime" Nullable="false" />
           <Property Name="us_last_login_time" Type="datetime" Nullable="false" />
           <Property Name="us_last_login_ip" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -299,8 +299,8 @@
           <Property Name="ct_client_tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ct_client_qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ct_wedding_day" Type="DateTime" Precision="3" />
-          <Property Name="ct_reach_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
-          <Property Name="ct_order_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ct_reach_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ct_order_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ct_express" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ct_freight" Type="Double" />
           <Property Name="ct_address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -318,7 +318,7 @@
           <Property Name="fu_function_dec" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="fu_controller" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="fu_action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="fu_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="fu_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="rf_role_function_rel" Relationship="Self.fk_rf_role_function_rel_fu_function_id" FromRole="fu_function" ToRole="rf_role_function_rel" />
         </EntityType>
         <EntityType Name="in_inventory">
@@ -333,8 +333,8 @@
           <Property Name="in_style_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="in_style_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="in_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="in_color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="in_size" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="in_color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="in_size" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="in_eur" Type="Double" />
           <Property Name="in_usd" Type="Double" />
           <Property Name="in_cny" Type="Double" />
@@ -368,7 +368,7 @@
           <Property Name="or_s_stature" Type="Double" />
           <Property Name="or_s_length" Type="Double" />
           <Property Name="or_s_shoes" Type="Double" />
-          <Property Name="or_order_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="or_order_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ct_client" Relationship="Self.fk_or_order_ct_client_id" FromRole="or_order" ToRole="ct_client" />
           <NavigationProperty Name="in_inventory" Relationship="Self.fk_or_order_in_inventory_id" FromRole="or_order" ToRole="in_inventory" />
           <NavigationProperty Name="ul_userlog" Relationship="Self.fk_ul_userlog_or_order_id" FromRole="or_order" ToRole="ul_userlog" />
@@ -380,7 +380,7 @@
           <Property Name="rf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ro_role_id" Type="Int32" Nullable="false" />
           <Property Name="fu_function_id" Type="Int32" Nullable="false" />
-          <Property Name="rf_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="rf_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="fu_function" Relationship="Self.fk_rf_role_function_rel_fu_function_id" FromRole="rf_role_function_rel" ToRole="fu_function" />
           <NavigationProperty Name="ro_role" Relationship="Self.fk_rf_role_function_rel_ro_role_id" FromRole="rf_role_function_rel" ToRole="ro_role" />
         </EntityType>
@@ -391,7 +391,7 @@
           <Property Name="ro_role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ro_role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ro_function_dec" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ro_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ro_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="rf_role_function_rel" Relationship="Self.fk_rf_role_function_rel_ro_role_id" FromRole="ro_role" ToRole="rf_role_function_rel" />
           <NavigationProperty Name="us_user" Relationship="Self.fk_us_user_ro_role_id" FromRole="ro_role" ToRole="us_user" />
         </EntityType>
@@ -432,7 +432,7 @@
           <Property Name="us_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="us_user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="us_from" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="us_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="us_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="us_create_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="us_last_login_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="us_last_login_ip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />

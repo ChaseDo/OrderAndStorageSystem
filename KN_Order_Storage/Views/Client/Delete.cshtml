@@ -1,4 +1,5 @@
 ﻿@model KN_Order_Storage.ct_client
+@using KN_Order_Storage.Common
 
 @{
     ViewBag.Title = "删除客户";
@@ -16,9 +17,18 @@
             @Html.DisplayNameFor(model => model.ct_client_source)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ct_client_source)
-        </dd>
+        @if (Model.ct_client_source.Trim() != WebConstants.SearchOther)
+        {
+            <dd>
+                @Html.DisplayFor(model => model.ct_client_source)
+            </dd>
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.ct_client_source_cst)
+            </dd>
+        }
 
         <dt>
             @Html.DisplayNameFor(model => model.ct_client_name)

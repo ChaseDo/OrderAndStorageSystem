@@ -86,8 +86,8 @@
             @Html.LabelFor(model => model.ct_reach_status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ct_reach_status, new List<SelectListItem> {
-                        new SelectListItem(){Text = "未到店", Value = WebConstants.ClientReachStatusN}
-                        , new SelectListItem(){Text = "已到店", Value = WebConstants.ClientReachStatusR}
+                        new SelectListItem(){Text = WebConstants.ClientReachStatusN, Value = WebConstants.ClientReachStatusN}
+                        , new SelectListItem(){Text = WebConstants.ClientReachStatusR, Value = WebConstants.ClientReachStatusR}
                     }, new { @class = "btn btn-default dropdown-toggle col-md-2" })
                 
                 @Html.ValidationMessageFor(model => model.ct_reach_status)
@@ -98,9 +98,9 @@
             @Html.LabelFor(model => model.ct_order_status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ct_order_status, new List<SelectListItem> {
-                        new SelectListItem(){Text = "未下单", Value = WebConstants.ClientOrderStatusN}
-                        , new SelectListItem(){Text = "已下单", Value = WebConstants.ClientOrderStatusO}
-                        , new SelectListItem(){Text = "已结单", Value = WebConstants.ClientOrderStatusD}
+                        new SelectListItem(){Text = WebConstants.ClientOrderStatusN, Value = WebConstants.ClientOrderStatusN}
+                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusO, Value = WebConstants.ClientOrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusD, Value = WebConstants.ClientOrderStatusD}
                     }, new { @class = "btn btn-default dropdown-toggle col-md-2" })
                 @Html.ValidationMessageFor(model => model.ct_order_status)
             </div>

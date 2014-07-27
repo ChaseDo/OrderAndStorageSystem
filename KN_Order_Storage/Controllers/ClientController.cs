@@ -26,6 +26,8 @@ namespace KN_Order_Storage.Controllers
         // GET: /Client/
         public ActionResult Index(string source, string reachstatus, string orderstatus, string dp1, string dp2, string criteria, string term)
         {
+            PopulateClientSourceOption(true);
+
             if (String.IsNullOrEmpty(source))
             {
                 return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.ClientStatusYes).ToList());
@@ -36,7 +38,7 @@ namespace KN_Order_Storage.Controllers
 
                 if (source != WebConstants.SearchAll)
                 {
-                    predicate = predicate.And(p => p.ct_status.Contains(source));
+                    predicate = predicate.And(p => p.ct_client_source.Contains(source));
                 }
                 if (reachstatus != WebConstants.SearchAll)
                 {
@@ -108,7 +110,7 @@ namespace KN_Order_Storage.Controllers
         public ActionResult Create([Bind(Include="ct_client_id,ct_client_source,us_user_name,ct_create_time,ct_client_name,ct_status,ct_client_tel,ct_client_qq,ct_wedding_day,ct_reach_status,ct_order_status,ct_express,ct_freight,ct_address,ct_remark")] ct_client ct_client)
         {         
             if (ModelState.IsValid)
-            {               
+            {
                 db.ct_client.Add(ct_client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -190,14 +192,28 @@ namespace KN_Order_Storage.Controllers
         }
 
         //Populate ClientSourceOption
-        private void PopulateClientSourceOption()
+        private void PopulateClientSourceOption(bool bIndex= false)
         {
-            ViewBag.Source = (from x in OptionsProvider.GetClientSourceOption().Sources
-                              select new SelectListItem()
-                              {
-                                  Text = x.Name,
-                                  Value = x.Id
-                              }).ToList();
+            List<SelectListItem> list = new List<SelectListItem>(); 
+
+            if (bIndex)
+            {
+                list.Add(new SelectListItem() { Text = WebConstants.SearchAll, Value = WebConstants.SearchAll });
+
+                foreach (var x in OptionsProvider.GetClientSourceOption().Sources) 
+                { 
+                    list.Add(new SelectListItem() { Text = x.Name, Value = x.Name });
+                }
+            }
+            else
+            {
+                foreach (var x in OptionsProvider.GetClientSourceOption().Sources)
+                {
+                    list.Add(new SelectListItem() { Text = x.Name, Value = x.Name });
+                }
+            }
+
+            ViewBag.Source = list;
         }
     }
 }

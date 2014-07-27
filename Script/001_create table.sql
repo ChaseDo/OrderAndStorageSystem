@@ -84,8 +84,8 @@ CREATE TABLE [dbo].[ct_client](
 	[ct_client_tel] [nvarchar](50) NOT NULL,
 	[ct_client_qq] [nvarchar](50) NULL,
 	[ct_wedding_day] [datetime] NULL,
-	[ct_reach_status] [nchar](1) NULL,
-	[ct_order_status] [nchar](1) NULL,
+	[ct_reach_status] [nvarchar](10) NULL,
+	[ct_order_status] [nvarchar](10) NULL,
 	[ct_express] [nvarchar](50) NULL,
 	[ct_freight] [float] NULL,
 	[ct_address] [nvarchar](500) NULL,
@@ -101,8 +101,8 @@ CREATE TABLE [dbo].[in_inventory](
 	[in_style_id] [nvarchar](50) NULL,
 	[in_style_name] [nvarchar](50) NULL,
 	[in_status] [nchar](1) NOT NULL,	
-	[in_color] [nchar](10) NULL,
-	[in_size] [nchar](10) NULL,
+	[in_color] [nvarchar](10) NULL,
+	[in_size] [nvarchar](10) NULL,
 	[in_eur] [float] NULL,
 	[in_usd] [float] NULL,
 	[in_cny] [float] NULL,
@@ -144,7 +144,7 @@ CREATE TABLE [dbo].[or_order](
 	[or_s_stature] [float] NULL,
 	[or_s_length] [float] NULL,
 	[or_s_shoes] [float] NULL,
-	[or_order_status] [nchar](1) NULL
+	[or_order_status] [nvarchar](10) NULL
 ) ON [PRIMARY]
 
 ALTER TABLE st_stock
@@ -167,21 +167,21 @@ CREATE TABLE [dbo].[fu_function](
 	[fu_function_dec] [nvarchar](500) NULL,
 	[fu_controller] [nvarchar](50) NOT NULL,
 	[fu_action] [nvarchar](50) NOT NULL,
-	[fu_status] [nchar](10) NOT NULL
+	[fu_status] [nchar](1) NOT NULL
 ) ON [PRIMARY]
 
 CREATE TABLE [dbo].[ro_role](
 	[ro_role_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 	[ro_role_name] [nvarchar](50) NOT NULL,
 	[ro_function_dec] [nvarchar](500) NULL,
-	[ro_status] [nchar](10) NOT NULL
+	[ro_status] [nchar](1) NOT NULL
 ) ON [PRIMARY]
 
 CREATE TABLE [dbo].[rf_role_function_rel](
 	[rf_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL, 
 	[ro_role_id] [int] NOT NULL,
 	[fu_function_id] [int] NOT NULL,
-	[rf_status] [nchar](10) NOT NULL
+	[rf_status] [nchar](1) NOT NULL
 ) ON [PRIMARY]
 
 CREATE TABLE [dbo].[us_user](
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[us_user](
 	[us_user_name] [nvarchar](50) NOT NULL,
 	[us_user_password] [nvarchar](50) NOT NULL,
 	[us_from] [nvarchar](50) NULL,
-	[us_status] [nchar](10) NOT NULL,
+	[us_status] [nchar](1) NOT NULL,
 	[us_create_time] [datetime] NOT NULL,
 	[us_last_login_time] [datetime] NOT NULL,
 	[us_last_login_ip] [nvarchar](255) NOT NULL,
