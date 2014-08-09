@@ -84,7 +84,6 @@
           <Property Name="or_s_length" Type="float" />
           <Property Name="or_s_shoes" Type="float" />
           <Property Name="or_order_status" Type="nvarchar" MaxLength="10" />
-          <Property Name="or_order_no" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="rf_role_function_rel">
           <Key>
@@ -373,7 +372,6 @@
           <NavigationProperty Name="ct_client" Relationship="Self.fk_or_order_ct_client_id" FromRole="or_order" ToRole="ct_client" />
           <NavigationProperty Name="in_inventory" Relationship="Self.fk_or_order_in_inventory_id" FromRole="or_order" ToRole="in_inventory" />
           <NavigationProperty Name="ul_userlog" Relationship="Self.fk_ul_userlog_or_order_id" FromRole="or_order" ToRole="ul_userlog" />
-          <Property Name="or_order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="rf_role_function_rel">
           <Key>
@@ -646,7 +644,6 @@
           <EntitySetMapping Name="or_order">
             <EntityTypeMapping TypeName="KNOrderStorageModel.or_order">
               <MappingFragment StoreEntitySet="or_order">
-                <ScalarProperty Name="or_order_no" ColumnName="or_order_no" />
                 <ScalarProperty Name="or_order_id" ColumnName="or_order_id" />
                 <ScalarProperty Name="ct_client_id" ColumnName="ct_client_id" />
                 <ScalarProperty Name="or_order_type" ColumnName="or_order_type" />
