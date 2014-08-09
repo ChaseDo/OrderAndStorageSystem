@@ -144,7 +144,8 @@ CREATE TABLE [dbo].[or_order](
 	[or_s_stature] [float] NULL,
 	[or_s_length] [float] NULL,
 	[or_s_shoes] [float] NULL,
-	[or_order_status] [nvarchar](10) NULL
+	[or_order_status] [nvarchar](10) NULL,
+	[or_order_no] [nvarchar](50) NULL
 ) ON [PRIMARY]
 
 ALTER TABLE st_stock

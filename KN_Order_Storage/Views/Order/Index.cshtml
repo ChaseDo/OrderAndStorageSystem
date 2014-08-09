@@ -1,23 +1,59 @@
 ﻿@model IEnumerable<KN_Order_Storage.or_order>
+@using KN_Order_Storage.Common
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "订单信息";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>订单管理</h2>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                @Html.DropDownList("ordertype", new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = WebConstants.OrderTypeCST, Value = WebConstants.OrderTypeCST}
+                        , new SelectListItem(){Text = WebConstants.OrderTypeSpot, Value = WebConstants.OrderTypeSpot}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                @Html.DropDownList("orderstatus", new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                        , new SelectListItem(){Text = WebConstants.OrderStatusO, Value = WebConstants.OrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.OrderStatusR, Value = WebConstants.OrderStatusR}
+                        , new SelectListItem(){Text = WebConstants.OrderStatusG, Value = WebConstants.OrderStatusG}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+                <label class="control-label">&nbsp;&nbsp;下单时间</label>
+                <input name="dp1" class="form-control" style="width: 10%" id="dp1">
+                <label class="control-label">至</label>
+                <input name="dp2" class="form-control" style="width: 10%" id="dp2">
+                &nbsp;&nbsp;
+                @Html.DropDownList("criteria", new List<SelectListItem> {
+                        new SelectListItem(){Text = "货号", Value = "sno"}
+                        , new SelectListItem(){Text = "单号", Value = "bill"}
+                        , new SelectListItem(){Text = "姓名", Value = "name"}
+                        , new SelectListItem(){Text = "电话", Value = "tel"}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 8%" })
+                <input name="term" type="text" class="form-control" style="width: 15%" placeholder="输入查询条件">
+                <button type="submit" class="btn btn-default">查询</button>
+                <div class="pull-right" style="height: 34px; padding: 6px 12px; vertical-align: middle; ">
+                    @Html.ActionLink("新增订单", "Create")
+                </div>
+            </div>
+        </form>
+    </div>
+</nav>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.or_order_type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.or_status)
+            @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.or_status)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.or_from)
         </th>
@@ -70,10 +106,7 @@
             @Html.DisplayNameFor(model => model.or_order_status)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.in_inventory.in_inventory_type)
+            @Html.DisplayNameFor(model => model.or_order_no)
         </th>
         <th></th>
     </tr>
@@ -83,8 +116,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.or_order_type)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.or_status)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_from)
@@ -138,10 +174,7 @@
             @Html.DisplayFor(modelItem => item.or_order_status)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.in_inventory.in_inventory_type)
+            @Html.DisplayFor(modelItem => item.or_order_no)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.or_order_id }) |
