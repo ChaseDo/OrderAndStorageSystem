@@ -11,6 +11,7 @@ namespace KN_Order_Storage
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class or_order
     {
@@ -18,29 +19,72 @@ namespace KN_Order_Storage
         {
             this.ul_userlog = new HashSet<ul_userlog>();
         }
-    
+
+        [Required]
         public int or_order_id { get; set; }
         public Nullable<int> ct_client_id { get; set; }
+
+        [Display(Name = "订单类型")]
         public string or_order_type { get; set; }
         public Nullable<int> in_inventory_id { get; set; }
+
+        [Required]
+        [Display(Name = "状态")]
         public string or_status { get; set; }
+
+        [Display(Name = "门店")]
         public string or_from { get; set; }
+
+        [Display(Name = "下单时间")]
         public Nullable<System.DateTime> or_order_time { get; set; }
+
+        [Display(Name = "取货时间")]
         public Nullable<System.DateTime> or_delivered_time { get; set; }
+
+        [Display(Name = "货号")]
         public string or_style_id { get; set; }
+
+        [Display(Name = "款名")]
         public string or_style_name { get; set; }
+
+        [Display(Name = "经手人")]
         public string or_handled_by { get; set; }
+
+        [Display(Name = "价格")]
         public Nullable<double> or_price { get; set; }
+
+        [Display(Name = "数量")]
         public Nullable<double> or_amount { get; set; }
+
+        [Display(Name = "备注")]
         public string or_remark { get; set; }
+
+        [Display(Name = "肩")]
         public Nullable<double> or_s_shoulder { get; set; }
+
+        [Display(Name = "胸")]
         public Nullable<double> or_s_chest { get; set; }
+
+        [Display(Name = "腰")]
         public Nullable<double> or_s_waist { get; set; }
+
+        [Display(Name = "臀")]
         public Nullable<double> or_s_buttocks { get; set; }
+
+        [Display(Name = "身高")]
         public Nullable<double> or_s_stature { get; set; }
+
+        [Display(Name = "总长")]
         public Nullable<double> or_s_length { get; set; }
+
+        [Display(Name = "鞋高")]
         public Nullable<double> or_s_shoes { get; set; }
+
+        [Display(Name = "订单状态")]
         public string or_order_status { get; set; }
+
+        [Display(Name = "单号")]
+        public string or_order_no { get; set; }
     
         public virtual ct_client ct_client { get; set; }
         public virtual in_inventory in_inventory { get; set; }

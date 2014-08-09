@@ -49,7 +49,7 @@ namespace KN_Order_Storage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="or_order_id,ct_client_id,or_order_type,in_inventory_id,or_status,or_from,or_order_time,or_delivered_time,or_style_id,or_style_name,or_handled_by,or_price,or_amount,or_remark,or_s_shoulder,or_s_chest,or_s_waist,or_s_buttocks,or_s_stature,or_s_length,or_s_shoes,or_order_status")] or_order or_order)
+        public ActionResult Create([Bind(Include = "or_order_id,ct_client_id,or_order_type,in_inventory_id,or_status,or_from,or_order_time,or_delivered_time,or_style_id,or_style_name,or_handled_by,or_price,or_amount,or_remark,or_s_shoulder,or_s_chest,or_s_waist,or_s_buttocks,or_s_stature,or_s_length,or_s_shoes,or_order_status,or_order_no")] or_order or_order)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace KN_Order_Storage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="or_order_id,ct_client_id,or_order_type,in_inventory_id,or_status,or_from,or_order_time,or_delivered_time,or_style_id,or_style_name,or_handled_by,or_price,or_amount,or_remark,or_s_shoulder,or_s_chest,or_s_waist,or_s_buttocks,or_s_stature,or_s_length,or_s_shoes,or_order_status")] or_order or_order)
+        public ActionResult Edit([Bind(Include = "or_order_id,ct_client_id,or_order_type,in_inventory_id,or_status,or_from,or_order_time,or_delivered_time,or_style_id,or_style_name,or_handled_by,or_price,or_amount,or_remark,or_s_shoulder,or_s_chest,or_s_waist,or_s_buttocks,or_s_stature,or_s_length,or_s_shoes,or_order_status,or_order_no")] or_order or_order)
         {
             if (ModelState.IsValid)
             {
