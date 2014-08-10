@@ -99,7 +99,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-
             @if (item.ct_client_source.Trim() != WebConstants.SearchOther)
             {
                 @Html.DisplayFor(modelItem => item.ct_client_source)

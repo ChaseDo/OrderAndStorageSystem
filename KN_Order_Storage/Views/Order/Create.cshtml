@@ -1,27 +1,29 @@
 ﻿@model KN_Order_Storage.or_order
+@using KN_Order_Storage.Common
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "新增订单";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
+<h2>新增订单</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>or_order</h4>
+        @*<h4>订单</h4>*@
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ct_client_id, "ct_client_id", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ct_client.ct_client_source, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ct_client_id", String.Empty)
-                @Html.ValidationMessageFor(model => model.ct_client_id)
+                @Html.DropDownListFor(model => model.ct_client.ct_client_source, (List<SelectListItem>)ViewBag.Source, new { @id = "sourceDropDown", @class = "btn btn-default dropdown-toggle col-md-2" })
+                @Html.ValidationMessageFor(model => model.ct_client.ct_client_source)&nbsp;
+                @Html.EditorFor(model => model.ct_client.ct_client_source_cst, new { @id = "sourceCSTEditor" })
+                @Html.ValidationMessageFor(model => model.ct_client.ct_client_source_cst)
             </div>
         </div>
 

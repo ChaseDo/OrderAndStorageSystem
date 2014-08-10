@@ -8,7 +8,7 @@ namespace KN_Order_Storage.Logic.Interfaces
 {
     public interface IOptionsProvider
     {
-        ClientSourceOption GetClientSourceOption();
+        dynamic PopulateClientSourceOption(bool bIndex);
 
         //AreaOption GetAreaOption();
     }

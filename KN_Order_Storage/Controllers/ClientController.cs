@@ -20,13 +20,12 @@ namespace KN_Order_Storage.Controllers
     public class ClientController : Controller
     {
         private IOptionsProvider OptionsProvider = new OptionsProvider();
-
         private KN_Order_Storage_Entities db = new KN_Order_Storage_Entities();
 
         // GET: /Client/
         public ActionResult Index(string source, string reachstatus, string orderstatus, string dp1, string dp2, string criteria, string term)
         {
-            PopulateClientSourceOption(true);
+            ViewBag.Source = OptionsProvider.PopulateClientSourceOption(true);
 
             if (String.IsNullOrEmpty(source))
             {
@@ -92,7 +91,7 @@ namespace KN_Order_Storage.Controllers
         // GET: /Client/Create
         public ActionResult Create()
         {
-            PopulateClientSourceOption();
+            ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
 
             ct_client client = new KN_Order_Storage.ct_client();
             client.us_user_name = "admin";
@@ -115,7 +114,7 @@ namespace KN_Order_Storage.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            PopulateClientSourceOption();
+            ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
             return View(ct_client);
         }
 
@@ -133,7 +132,7 @@ namespace KN_Order_Storage.Controllers
             }
             else
             {
-                PopulateClientSourceOption();
+                ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
             }
             return View(ct_client);
         }
@@ -191,29 +190,5 @@ namespace KN_Order_Storage.Controllers
             base.Dispose(disposing);
         }
 
-        //Populate ClientSourceOption
-        private void PopulateClientSourceOption(bool bIndex= false)
-        {
-            List<SelectListItem> list = new List<SelectListItem>(); 
-
-            if (bIndex)
-            {
-                list.Add(new SelectListItem() { Text = WebConstants.SearchAll, Value = WebConstants.SearchAll });
-
-                foreach (var x in OptionsProvider.GetClientSourceOption().Sources) 
-                { 
-                    list.Add(new SelectListItem() { Text = x.Name, Value = x.Name });
-                }
-            }
-            else
-            {
-                foreach (var x in OptionsProvider.GetClientSourceOption().Sources)
-                {
-                    list.Add(new SelectListItem() { Text = x.Name, Value = x.Name });
-                }
-            }
-
-            ViewBag.Source = list;
-        }
     }
 }

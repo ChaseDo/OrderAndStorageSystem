@@ -16,13 +16,15 @@
                         , new SelectListItem(){Text = WebConstants.OrderTypeCST, Value = WebConstants.OrderTypeCST}
                         , new SelectListItem(){Text = WebConstants.OrderTypeSpot, Value = WebConstants.OrderTypeSpot}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                @Html.DropDownList("orderhandle", new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderstatus", new List<SelectListItem> {
                         new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
                         , new SelectListItem(){Text = WebConstants.OrderStatusO, Value = WebConstants.OrderStatusO}
                         , new SelectListItem(){Text = WebConstants.OrderStatusR, Value = WebConstants.OrderStatusR}
                         , new SelectListItem(){Text = WebConstants.OrderStatusG, Value = WebConstants.OrderStatusG}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
-
                 <label class="control-label">&nbsp;&nbsp;下单时间</label>
                 <input name="dp1" class="form-control" style="width: 10%" id="dp1">
                 <label class="control-label">至</label>
@@ -49,17 +51,26 @@
             @Html.DisplayNameFor(model => model.or_order_type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
+            @Html.DisplayNameFor(model => model.or_order_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_order_status)
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.or_status)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.or_from)
+            @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.or_order_time)
+            @Html.DisplayNameFor(model => model.ct_client.ct_client_name)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ct_client.ct_client_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.or_from)
+        </th> 
         <th>
             @Html.DisplayNameFor(model => model.or_delivered_time)
         </th>
@@ -78,10 +89,7 @@
         <th>
             @Html.DisplayNameFor(model => model.or_amount)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.or_remark)
-        </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.or_s_shoulder)
         </th>
         <th>
@@ -101,9 +109,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.or_s_shoes)
-        </th>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.or_order_status)
+            @Html.DisplayNameFor(model => model.or_remark)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.or_order_no)
@@ -116,17 +124,33 @@
         <td>
             @Html.DisplayFor(modelItem => item.or_order_type)
         </td>
+        <td>
+            @Html.ActionLink(item.or_order_time.ToString(), "Details", new { id = item.or_order_id })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.or_order_status)
+        </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.or_status)
         </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
+            @if (item.ct_client.ct_client_source.Trim() != WebConstants.SearchOther)
+            {
+                @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.ct_client.ct_client_source_cst)
+            }      
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ct_client.ct_client_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ct_client.ct_client_tel)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_from)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.or_order_time)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_delivered_time)
@@ -135,7 +159,19 @@
             @Html.DisplayFor(modelItem => item.or_style_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.or_style_name)
+            @if (!item.or_style_name.IsEmpty())
+            {
+                if (item.or_style_name.Length > 10)
+                {
+                    <div title="@item.or_style_name">
+                        @item.or_style_name.Substring(0, 10)..
+                    </div>
+                }
+                else
+                {
+                    <div>@item.or_style_name</div>
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_handled_by)
@@ -146,10 +182,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.or_amount)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.or_remark)
-        </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.or_s_shoulder)
         </td>
         <td>
@@ -169,16 +202,27 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_s_shoes)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.or_order_status)
+            @if (!item.or_remark.IsEmpty())
+            {
+                if (item.or_remark.Length > 10)
+                {
+                    <div title="@item.or_remark">
+                        @item.or_remark.Substring(0, 10)..
+                    </div>
+                }
+                else
+                {
+                    <div>@item.or_remark</div>
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_order_no)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.or_order_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.or_order_id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.or_order_id })
         </td>
     </tr>
