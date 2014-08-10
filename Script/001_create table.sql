@@ -124,7 +124,7 @@ CREATE TABLE [dbo].[st_stock](
 
 CREATE TABLE [dbo].[or_order](
 	[or_order_id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	[ct_client_id] [int] NOT NULL,
+	[ct_client_id] [int] NULL,
 	[or_order_type] [nchar](10) NOT NULL,
 	[in_inventory_id] [int] NULL,
 	[or_status] [nchar](1) NOT NULL,
