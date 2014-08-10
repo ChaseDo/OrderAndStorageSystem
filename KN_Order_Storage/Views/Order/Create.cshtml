@@ -28,6 +28,22 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ct_client.ct_client_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client.ct_client_name)
+                @Html.ValidationMessageFor(model => model.ct_client.ct_client_name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ct_client.ct_client_tel, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client.ct_client_tel)
+                @Html.ValidationMessageFor(model => model.ct_client.ct_client_tel)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.or_order_type, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.or_order_type)
@@ -35,15 +51,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.in_inventory_id, "in_inventory_id", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("in_inventory_id", String.Empty)
-                @Html.ValidationMessageFor(model => model.in_inventory_id)
-            </div>
-        </div>
-
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.or_status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.or_status)
@@ -52,10 +60,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.or_from, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.or_order_status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.or_from)
-                @Html.ValidationMessageFor(model => model.or_from)
+                @Html.DropDownListFor(model => model.or_order_status, new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.cOrderStatusO, Value = WebConstants.cOrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.cOrderStatusR, Value = WebConstants.cOrderStatusR}
+                        , new SelectListItem(){Text = WebConstants.cOrderStatusG, Value = WebConstants.cOrderStatusG}
+                    }, new { @class = "btn btn-default dropdown-toggle col-md-2" })
+                @Html.ValidationMessageFor(model => model.or_order_status)
             </div>
         </div>
 
@@ -116,14 +128,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.or_remark, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.or_remark)
-                @Html.ValidationMessageFor(model => model.or_remark)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.or_s_shoulder, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.or_s_shoulder)
@@ -180,10 +184,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.or_order_status, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.or_remark, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.or_order_status)
-                @Html.ValidationMessageFor(model => model.or_order_status)
+                @Html.EditorFor(model => model.or_remark)
+                @Html.ValidationMessageFor(model => model.or_remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.or_order_no, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.or_order_no)
+                @Html.ValidationMessageFor(model => model.or_order_no)
             </div>
         </div>
 

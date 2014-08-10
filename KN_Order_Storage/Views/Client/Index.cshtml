@@ -14,15 +14,15 @@
                 @Html.DropDownList("source", (List<SelectListItem>)ViewBag.Source, 
                         new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("reachstatus", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = WebConstants.ClientReachStatusN, Value = WebConstants.ClientReachStatusN}
-                        , new SelectListItem(){Text = WebConstants.ClientReachStatusR, Value = WebConstants.ClientReachStatusR}
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
+                        , new SelectListItem(){Text = WebConstants.cClientReachStatusN, Value = WebConstants.cClientReachStatusN}
+                        , new SelectListItem(){Text = WebConstants.cClientReachStatusR, Value = WebConstants.cClientReachStatusR}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderstatus", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusN, Value = WebConstants.ClientOrderStatusN}
-                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusO, Value = WebConstants.ClientOrderStatusO}
-                        , new SelectListItem(){Text = WebConstants.ClientOrderStatusD, Value = WebConstants.ClientOrderStatusD}
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
+                        , new SelectListItem(){Text = WebConstants.cClientOrderStatusN, Value = WebConstants.cClientOrderStatusN}
+                        , new SelectListItem(){Text = WebConstants.cClientOrderStatusO, Value = WebConstants.cClientOrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.cClientOrderStatusD, Value = WebConstants.cClientOrderStatusD}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 <label class="control-label">&nbsp;&nbsp;婚期</label>
                 <input name="dp1" class="form-control" style="width: 10%" id="dp1">
@@ -99,7 +99,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @if (item.ct_client_source.Trim() != WebConstants.SearchOther)
+            @if (item.ct_client_source.Trim() != WebConstants.cSearchOther)
             {
                 @Html.DisplayFor(modelItem => item.ct_client_source)
             } 

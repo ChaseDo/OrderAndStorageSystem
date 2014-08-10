@@ -17,7 +17,7 @@ namespace KN_Order_Storage.Logic.Implementor
     {
         private ClientSourceOption GetClientSourceOption()
         {
-            string file = AppDomain.CurrentDomain.BaseDirectory + WebConfigurationManager.AppSettings[WebConstants.ClientSourceAdd];
+            string file = AppDomain.CurrentDomain.BaseDirectory + WebConfigurationManager.AppSettings[WebConstants.cClientSourceAdd];
             using (Stream stream = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
                 XDocument xDocument = XDocument.Load(stream);
@@ -34,7 +34,7 @@ namespace KN_Order_Storage.Logic.Implementor
 
             if (bIndex)
             {
-                list.Add(new SelectListItem() { Text = WebConstants.SearchAll, Value = WebConstants.SearchAll });
+                list.Add(new SelectListItem() { Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll });
 
                 foreach (var x in GetClientSourceOption().Sources)
                 {

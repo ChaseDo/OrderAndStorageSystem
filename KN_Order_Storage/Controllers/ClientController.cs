@@ -29,21 +29,21 @@ namespace KN_Order_Storage.Controllers
 
             if (String.IsNullOrEmpty(source))
             {
-                return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.ClientStatusYes).ToList());
+                return View(db.ct_client.Where(ct => ct.ct_status == WebConstants.cStatusYes).ToList());
             }
             else
             {
                 var predicate = PredicateBuilder.True<ct_client>();
 
-                if (source != WebConstants.SearchAll)
+                if (source != WebConstants.cSearchAll)
                 {
                     predicate = predicate.And(p => p.ct_client_source.Contains(source));
                 }
-                if (reachstatus != WebConstants.SearchAll)
+                if (reachstatus != WebConstants.cSearchAll)
                 {
                     predicate = predicate.And(p => p.ct_reach_status.Contains(reachstatus));
                 }
-                if (orderstatus != WebConstants.SearchAll)
+                if (orderstatus != WebConstants.cSearchAll)
                 {
                     predicate = predicate.And(p => p.ct_order_status.Contains(orderstatus));
                 }
@@ -93,9 +93,9 @@ namespace KN_Order_Storage.Controllers
         {
             ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
 
-            ct_client client = new KN_Order_Storage.ct_client();
+            ct_client client = new ct_client();
             client.us_user_name = "admin";
-            client.ct_status = WebConstants.ClientStatusYes;
+            client.ct_status = WebConstants.cStatusYes;
             client.ct_create_time = DateTime.Now;
 
             return View(client);
@@ -174,7 +174,7 @@ namespace KN_Order_Storage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ct_client ct_client = db.ct_client.Find(id);
-            ct_client.ct_status = WebConstants.ClientStatusNo;
+            ct_client.ct_status = WebConstants.cStatusNo;
             db.Entry(ct_client).State = EntityState.Modified;
             //db.ct_client.Remove(ct_client);
             db.SaveChanges();

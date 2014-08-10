@@ -12,18 +12,18 @@
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
                 @Html.DropDownList("ordertype", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = WebConstants.OrderTypeCST, Value = WebConstants.OrderTypeCST}
-                        , new SelectListItem(){Text = WebConstants.OrderTypeSpot, Value = WebConstants.OrderTypeSpot}
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
+                        , new SelectListItem(){Text = WebConstants.cOrderTypeCST, Value = WebConstants.cOrderTypeCST}
+                        , new SelectListItem(){Text = WebConstants.cOrderTypeSpot, Value = WebConstants.cOrderTypeSpot}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderhandle", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderstatus", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.SearchAll, Value = WebConstants.SearchAll}
-                        , new SelectListItem(){Text = WebConstants.OrderStatusO, Value = WebConstants.OrderStatusO}
-                        , new SelectListItem(){Text = WebConstants.OrderStatusR, Value = WebConstants.OrderStatusR}
-                        , new SelectListItem(){Text = WebConstants.OrderStatusG, Value = WebConstants.OrderStatusG}
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
+                        , new SelectListItem(){Text = WebConstants.cOrderStatusO, Value = WebConstants.cOrderStatusO}
+                        , new SelectListItem(){Text = WebConstants.cOrderStatusR, Value = WebConstants.cOrderStatusR}
+                        , new SelectListItem(){Text = WebConstants.cOrderStatusG, Value = WebConstants.cOrderStatusG}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 <label class="control-label">&nbsp;&nbsp;下单时间</label>
                 <input name="dp1" class="form-control" style="width: 10%" id="dp1">
@@ -134,7 +134,7 @@
             @Html.DisplayFor(modelItem => item.or_status)
         </td>*@
         <td>
-            @if (item.ct_client.ct_client_source.Trim() != WebConstants.SearchOther)
+            @if (item.ct_client.ct_client_source.Trim() != WebConstants.cSearchOther)
             {
                 @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
             }

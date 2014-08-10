@@ -7,11 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KN_Order_Storage;
+using KN_Order_Storage.Logic.Interfaces;
+using KN_Order_Storage.Logic.Implementor;
+using KN_Order_Storage.Common;
 
 namespace KN_Order_Storage.Controllers
 {
     public class OrderController : Controller
     {
+        private IOptionsProvider OptionsProvider = new OptionsProvider();
         private KN_Order_Storage_Entities db = new KN_Order_Storage_Entities();
 
         // GET: /Order/
@@ -39,9 +43,19 @@ namespace KN_Order_Storage.Controllers
         // GET: /Order/Create
         public ActionResult Create()
         {
-            ViewBag.ct_client_id = new SelectList(db.ct_client, "ct_client_id", "ct_client_source");
-            ViewBag.in_inventory_id = new SelectList(db.in_inventory, "in_inventory_id", "in_inventory_type");
-            return View();
+            ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
+
+            ct_client client = new ct_client();
+            client.ct_status = WebConstants.cStatusYes;
+            client.us_user_name = "admin";
+            client.ct_create_time = DateTime.Now;
+
+            or_order order = new or_order();
+            order.or_status = WebConstants.cStatusYes;
+            order.or_from = "城西";
+            order.ct_client = client;
+
+            return View(order);
         }
 
         // POST: /Order/Create
@@ -53,6 +67,7 @@ namespace KN_Order_Storage.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.ct_client.Add(or_order.ct_client);
                 db.or_order.Add(or_order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
