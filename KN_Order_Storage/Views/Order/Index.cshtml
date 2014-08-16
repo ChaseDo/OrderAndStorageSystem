@@ -16,14 +16,14 @@
                         , new SelectListItem(){Text = WebConstants.cOrderTypeCST, Value = WebConstants.cOrderTypeCST}
                         , new SelectListItem(){Text = WebConstants.cOrderTypeSpot, Value = WebConstants.cOrderTypeSpot}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
-                @Html.DropDownList("orderhandle", new List<SelectListItem> {
-                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
-                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 @Html.DropDownList("orderstatus", new List<SelectListItem> {
                         new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
                         , new SelectListItem(){Text = WebConstants.cOrderStatusO, Value = WebConstants.cOrderStatusO}
                         , new SelectListItem(){Text = WebConstants.cOrderStatusR, Value = WebConstants.cOrderStatusR}
                         , new SelectListItem(){Text = WebConstants.cOrderStatusG, Value = WebConstants.cOrderStatusG}
+                    }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
+                @Html.DropDownList("orderhandle", new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.cSearchAll, Value = WebConstants.cSearchAll}
                     }, new { @class = "form-control btn btn-default dropdown-toggle", @style = "width: 10%" })
                 <label class="control-label">&nbsp;&nbsp;下单时间</label>
                 <input name="dp1" class="form-control" style="width: 10%" id="dp1">
