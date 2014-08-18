@@ -46,9 +46,12 @@ namespace KN_Order_Storage.Controllers
             ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
 
             ct_client client = new ct_client();
+            client.ct_client_id = 0;
             client.ct_status = WebConstants.cStatusYes;
             client.us_user_name = "admin";
             client.ct_create_time = DateTime.Now;
+            client.ct_reach_status = WebConstants.cClientReachStatusR;
+            client.ct_order_status = WebConstants.cClientOrderStatusO;
 
             or_order order = new or_order();
             order.or_status = WebConstants.cStatusYes;
@@ -63,7 +66,7 @@ namespace KN_Order_Storage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "or_order_id,ct_client_id,or_order_type,in_inventory_id,or_status,or_from,or_order_time,or_delivered_time,or_style_id,or_style_name,or_handled_by,or_price,or_amount,or_remark,or_s_shoulder,or_s_chest,or_s_waist,or_s_buttocks,or_s_stature,or_s_length,or_s_shoes,or_order_status,or_order_no")] or_order or_order)
+        public ActionResult Create(or_order or_order)
         {
             if (ModelState.IsValid)
             {
@@ -73,8 +76,7 @@ namespace KN_Order_Storage.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ct_client_id = new SelectList(db.ct_client, "ct_client_id", "ct_client_source", or_order.ct_client_id);
-            ViewBag.in_inventory_id = new SelectList(db.in_inventory, "in_inventory_id", "in_inventory_type", or_order.in_inventory_id);
+            ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
             return View(or_order);
         }
 
@@ -90,8 +92,10 @@ namespace KN_Order_Storage.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ct_client_id = new SelectList(db.ct_client, "ct_client_id", "ct_client_source", or_order.ct_client_id);
-            ViewBag.in_inventory_id = new SelectList(db.in_inventory, "in_inventory_id", "in_inventory_type", or_order.in_inventory_id);
+            else
+            {
+                ViewBag.Source = OptionsProvider.PopulateClientSourceOption(false);
+            }
             return View(or_order);
         }
 
@@ -134,7 +138,9 @@ namespace KN_Order_Storage.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             or_order or_order = db.or_order.Find(id);
-            db.or_order.Remove(or_order);
+            or_order.or_status = WebConstants.cStatusNo;
+            db.Entry(or_order).State = EntityState.Modified;
+            //db.or_order.Remove(or_order);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

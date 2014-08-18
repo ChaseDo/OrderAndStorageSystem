@@ -36,9 +36,11 @@ namespace KN_Order_Storage
         public string or_from { get; set; }
 
         [Display(Name = "下单时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public Nullable<System.DateTime> or_order_time { get; set; }
 
         [Display(Name = "取货时间")]
+        [DisplayFormat(DataFormatString = "{0:yyyy年MM月dd日}")]
         public Nullable<System.DateTime> or_delivered_time { get; set; }
 
         [Display(Name = "货号")]

@@ -29,7 +29,10 @@
             <div class="col-xs-6">
                 @Html.LabelFor(model => model.or_order_type, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.or_order_type)
+                    @Html.DropDownListFor(model => model.or_order_type, new List<SelectListItem> {
+                        new SelectListItem(){Text = WebConstants.cOrderTypeCST, Value = WebConstants.cOrderTypeCST}
+                        , new SelectListItem(){Text = WebConstants.cOrderTypeSpot, Value = WebConstants.cOrderTypeSpot}
+                    }, new { @class = "btn btn-default dropdown-toggle col-md-3" })
                     @Html.ValidationMessageFor(model => model.or_order_type)
                 </div>
             </div>
@@ -190,6 +193,14 @@
         </div>
 
         <div class="form-group hide">
+            @Html.LabelFor(model => model.or_from, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.or_from)
+                @Html.ValidationMessageFor(model => model.or_from)
+            </div>
+        </div>
+
+        <div class="form-group hide">
             @Html.LabelFor(model => model.or_status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.or_status)
@@ -197,11 +208,35 @@
             </div>
         </div>
 
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.ct_client.us_user_name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client.us_user_name)
+                @Html.ValidationMessageFor(model => model.ct_client.us_user_name)
+            </div>
+        </div>
+
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.ct_client.ct_create_time, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client.ct_create_time)
+                @Html.ValidationMessageFor(model => model.ct_client.ct_create_time)
+            </div>
+        </div> 
+
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.ct_client.ct_status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ct_client.ct_status)
+                @Html.ValidationMessageFor(model => model.ct_client.ct_status)
+            </div>
+        </div>
+
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>
 
 @section Scripts {

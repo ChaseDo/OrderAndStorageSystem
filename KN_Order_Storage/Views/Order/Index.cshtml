@@ -59,9 +59,9 @@
         @*<th>
             @Html.DisplayNameFor(model => model.or_status)
         </th>*@
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ct_client.ct_client_source)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ct_client.ct_client_name)
         </th>
@@ -125,7 +125,7 @@
             @Html.DisplayFor(modelItem => item.or_order_type)
         </td>
         <td>
-            @Html.ActionLink(item.or_order_time.ToString(), "Details", new { id = item.or_order_id })
+            @Html.ActionLink(String.Format("{0:D}", item.or_order_time), "Details", new { id = item.or_order_id })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.or_order_status)
@@ -133,7 +133,7 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.or_status)
         </td>*@
-        <td>
+        @*<td>
             @if (item.ct_client.ct_client_source.Trim() != WebConstants.cSearchOther)
             {
                 @Html.DisplayFor(modelItem => item.ct_client.ct_client_source)
@@ -142,9 +142,9 @@
             {
                 @Html.DisplayFor(modelItem => item.ct_client.ct_client_source_cst)
             }      
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.ct_client.ct_client_name)
+            @Html.ActionLink(item.ct_client.ct_client_name, "Details", "Client", new { id = item.ct_client.ct_client_id }, new { target = "_self" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ct_client.ct_client_tel)
@@ -222,8 +222,8 @@
             @Html.DisplayFor(modelItem => item.or_order_no)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.or_order_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.or_order_id })
+            @Html.ActionLink("编辑", "Edit", new { id=item.or_order_id }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.or_order_id })
         </td>
     </tr>
 }

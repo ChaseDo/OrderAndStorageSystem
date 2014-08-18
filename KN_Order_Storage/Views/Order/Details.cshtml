@@ -1,16 +1,118 @@
 ﻿@model KN_Order_Storage.or_order
+@using KN_Order_Storage.Common
 
 @{
-	ViewBag.Title = "Details";
+	ViewBag.Title = "订单详情";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>订单信息</h2>
 
 <div>
-	<h4>or_order</h4>
+	@*<h4>订单</h4>*@
 	<hr />
-	<dl class="dl-horizontal">
+	<dl class="dl-horizontal col-xs-6">
+		
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client.ct_client_source)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ct_client.ct_client_source)
+		</dd>
+		
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client.ct_client_name)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ct_client.ct_client_name)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.ct_client.ct_client_tel)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.ct_client.ct_client_tel)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_shoulder)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_shoulder)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_chest)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_chest)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_waist)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_waist)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_buttocks)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_buttocks)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_stature)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_stature)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_length)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_length)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_s_shoes)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_s_shoes)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.or_remark)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_remark)
+		</dd>
+
+	</dl>
+
+	<dl class="dl-horizontal col-xs-6">
+
+		@*<dt>
+			@Html.DisplayNameFor(model => model.or_status)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.or_status)
+		</dd>*@
+
 		<dt>
 			@Html.DisplayNameFor(model => model.or_order_type)
 		</dt>
@@ -20,11 +122,11 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.or_status)
+			@Html.DisplayNameFor(model => model.or_order_status)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.or_status)
+			@Html.DisplayFor(model => model.or_order_status)
 		</dd>
 
 		<dt>
@@ -92,96 +194,17 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.or_remark)
+			@Html.DisplayNameFor(model => model.or_order_no)
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.or_remark)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_shoulder)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_shoulder)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_chest)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_chest)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_waist)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_waist)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_buttocks)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_buttocks)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_stature)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_stature)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_length)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_length)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_s_shoes)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_s_shoes)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.or_order_status)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.or_order_status)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.ct_client.ct_client_source)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.ct_client.ct_client_source)
-		</dd>
-
-		<dt>
-			@Html.DisplayNameFor(model => model.in_inventory.in_inventory_type)
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.in_inventory.in_inventory_type)
+			@Html.DisplayFor(model => model.or_order_no)
 		</dd>
 
 	</dl>
+
 </div>
 <p>
-	@Html.ActionLink("Edit", "Edit", new { id = Model.or_order_id }) |
-	@Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("编辑", "Edit", new { id = Model.or_order_id }) |
+	@Html.ActionLink("返回列表", "Index")
 </p>
